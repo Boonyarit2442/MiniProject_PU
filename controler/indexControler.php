@@ -6,7 +6,7 @@ $service_name   = "";
 $sid            = "database";
 $port           = 1521;
 $dbtns          = "(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = $server)(PORT = $port)) (CONNECT_DATA = (SERVICE_NAME = $service_name) (SID = $sid)))";
-
+$Data;
 try{
     $conn = new PDO("oci:dbname=".$dbtns, $db_username, $db_password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -16,7 +16,6 @@ try{
 }
 
 $method = $_SERVER['REQUEST_METHOD'];
-
 switch ($method) {
     case 'GET':
         // Handle GET requests
@@ -26,7 +25,7 @@ switch ($method) {
             get($conn, $ssn);
         } else {
             // Retrieve all books
-            getAll($conn);
+            $Data = getAll($conn);
         }
         break;
 
@@ -39,6 +38,7 @@ switch ($method) {
         // Handle PUT requests
         parse_str(file_get_contents("php://input"), $put_vars);
         $id = $_GET['ssn'];
+
         update($conn, $ssn, $put_vars);
         break;
 
@@ -52,46 +52,50 @@ switch ($method) {
         http_response_code(405); // Method Not Allowed
         echo json_encode(array("message" => "Method not allowed."));
 }
+
+
 function getAll($conn)
 {
     $stmt = $conn->prepare("SELECT * FROM LOGIN");
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //echo json_encode($result); 
-    
+    return $result; 
 }
 
-function get($conn, $ssn)
+function get($conn, $ID)
 {
-    $stmt = $conn->prepare("SELECT * FROM employee WHERE ssn = :ssn");
-    $stmt->bindParam(':ssn', $ssn, PDO::PARAM_INT);
+try{
+    $stmt = $conn->prepare("SELECT * FROM employee WHERE ssn = :ID");
+    $stmt->bindParam(':ssn', $ID, PDO::PARAM_INT);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$result) {
-        http_response_code(404); // Not Found
-        echo json_encode(array("message" => "Employee not found."));
-    } else {
-        echo json_encode($result);
-    }
+}
+catch(PDOException $e){
+    echo $e->getMessage();
+}
 }
 
 function create($conn, $data)
 {
-    $fname = $data['fname'];
-    $lname = $data['lname'];
+    $ID = $data['NAME_ID'];
+    $USER = $data['USER1'];
+    $PASSWORD = $data['PASSWORD'];
 
-    $stmt = $conn->prepare("INSERT INTO employee (fname, lname) VALUES (:fname, :lname)");
-    $stmt->bindParam(':fname', $fname, PDO::PARAM_STR);
-    $stmt->bindParam(':lname', $lname, PDO::PARAM_STR);
-
+    $stmt = $conn->prepare("INSERT INTO LOGIN (NAME_ID, USER1, PASSWORD) VALUES (:ID, :USER1, :PASSWORD)");
+    $stmt->bindParam(':ID', $ID, PDO::PARAM_STR);
+    $stmt->bindParam(':USER1', $USER, PDO::PARAM_STR);
+    $stmt->bindParam(':PASSWORD', $PASSWORD, PDO::PARAM_STR);
+    
     if ($stmt->execute()) {
         http_response_code(201); // Created
-        echo json_encode(array("message" => "Employee created."));
+        echo json_encode(array("message" => "Login created."));
+        echo "<script> window.location = '../'</script>";
+        echo "rit";
     } else {
         http_response_code(500); // Internal Server Error
-        echo json_encode(array("message" => "Unable to create employee."));
+        echo json_encode(array("message" => "Unable to create login."));
     }
+    
 }
 
 function update($conn, $ssn, $data)
@@ -103,7 +107,7 @@ function update($conn, $ssn, $data)
     $stmt->bindParam(':fname', $fname, PDO::PARAM_STR);
     $stmt->bindParam(':lname', $lname, PDO::PARAM_STR);
     $stmt->bindParam(':ssn', $ssn, PDO::PARAM_INT);
-
+    echo $data;
     if ($stmt->execute()) {
         echo json_encode(array("message" => "Employee updated."));
     } else {
