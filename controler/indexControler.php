@@ -18,106 +18,70 @@ try{
 $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     case 'GET':
-        // Handle GET requests
-        if (isset($_GET['ssn'])) {
-            // Retrieve a single book by ID
-            $id = $_GET['ssn'];
-            get($conn, $ssn);
-        } else {
-            // Retrieve all books
-            $Data = getAll($conn);
-        }
+        $Data = getAll($conn);
         break;
-
     case 'POST':
-        // Handle POST requests
+       if($_POST['_method']==="ADD"){
         create($conn, $_POST);
+       }elseif($_POST['_method']==="EDIT"){
+        update($conn,$_POST);
+        //echo json_encode($_POST);
+       }elseif($_POST['_method']==="DELETE"){
+       } 
         break;
-
-    case 'PUT':
-        // Handle PUT requests
-        parse_str(file_get_contents("php://input"), $put_vars);
-        $id = $_GET['ssn'];
-
-        update($conn, $ssn, $put_vars);
-        break;
-
-    case 'DELETE':
-        // Handle DELETE requests
-        $id = $_GET['ssn'];
-        delete($conn, $ssn);
-        break;
-
     default:
         http_response_code(405); // Method Not Allowed
         echo json_encode(array("message" => "Method not allowed."));
 }
 
 
-function getAll($conn)
-{
-    $stmt = $conn->prepare("SELECT * FROM LOGIN");
-    $stmt->execute();
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+function getAll($conn){
+   try {
+        $stmt = $conn->prepare("SELECT * FROM LOGIN");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+    } catch (PDOException $e) {
+        echo $e->getMessage(); 
+    } 
     return $result; 
 }
 
-function get($conn, $ID)
-{
-try{
-    $stmt = $conn->prepare("SELECT * FROM employee WHERE ssn = :ID");
-    $stmt->bindParam(':ssn', $ID, PDO::PARAM_INT);
-    $stmt->execute();
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-}
-catch(PDOException $e){
-    echo $e->getMessage();
-}
-}
-
-function create($conn, $data)
-{
+function create($conn, $data){
     $ID = $data['NAME_ID'];
     $USER = $data['USER1'];
     $PASSWORD = $data['PASSWORD'];
-
-    $stmt = $conn->prepare("INSERT INTO LOGIN (NAME_ID, USER1, PASSWORD) VALUES (:ID, :USER1, :PASSWORD)");
-    $stmt->bindParam(':ID', $ID, PDO::PARAM_STR);
-    $stmt->bindParam(':USER1', $USER, PDO::PARAM_STR);
-    $stmt->bindParam(':PASSWORD', $PASSWORD, PDO::PARAM_STR);
-    
-    if ($stmt->execute()) {
-        http_response_code(201); // Created
-        echo json_encode(array("message" => "Login created."));
-        echo "<script> window.location = '../'</script>";
-        echo "rit";
-    } else {
-        http_response_code(500); // Internal Server Error
-        echo json_encode(array("message" => "Unable to create login."));
-    }
-    
-}
-
-function update($conn, $ssn, $data)
-{
-    $fname = $data['fname'];
-    $lname = $data['lname'];
-
-    $stmt = $conn->prepare("UPDATE employee SET fname = :fname, lname = :lname WHERE ssn = :ssn");
-    $stmt->bindParam(':fname', $fname, PDO::PARAM_STR);
-    $stmt->bindParam(':lname', $lname, PDO::PARAM_STR);
-    $stmt->bindParam(':ssn', $ssn, PDO::PARAM_INT);
-    echo $data;
-    if ($stmt->execute()) {
-        echo json_encode(array("message" => "Employee updated."));
-    } else {
-        http_response_code(500); // Internal Server Error
-        echo json_encode(array("message" => "Unable to update employee."));
+    try {
+        $stmt = $conn->prepare("INSERT INTO LOGIN (NAME_ID, USER1, PASSWORD) VALUES (:ID, :USER1, :PASSWORD)");
+        $stmt->bindParam(':ID', $ID, PDO::PARAM_STR);
+        $stmt->bindParam(':USER1', $USER, PDO::PARAM_STR);
+        $stmt->bindParam(':PASSWORD', $PASSWORD, PDO::PARAM_STR); 
+        $stmt->execute();
+       echo "<script>window.location = 'http://203.188.54.9/~u6411800010'</script>";
+        
+    } catch (PDOException $e) {
+        echo $e->getMessage();
     }
 }
 
-function delete($conn, $ssn)
-{
+function update($conn,$data){
+    $ID = $data['NAME_ID'];
+    $USER = $data['USER1'];
+    echo "rit";
+try {
+    $stmt = $conn->prepare("UPDATE LOGIN SET USER1 = :USER WHERE NAME_ID = :ID1");
+    $stmt->bindParam(':USER', $USER, PDO::PARAM_STR);
+    $stmt->bindParam(':ID1', $ID, PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetchAll();
+    echo http_response_code(202);
+    
+} catch(PDOException $e){
+    echo $e->getMessage();
+}
+
+}
+
+function delete($conn, $ssn){
     $stmt = $conn->prepare("DELETE FROM employee WHERE ssn = :ssn");
     $stmt->bindParam(':ssn', $ssn, PDO::PARAM_INT);
 
