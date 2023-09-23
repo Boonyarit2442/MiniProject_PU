@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #eaeaea;
+}
+
+.feature-con {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1420px;
+  margin: 20px auto;
+}
+
+.feature-text {
+  font-size: 28px;
+  font-weight: bold;
+  color: #3e91ff;
+}
+
+.add-feature {
+  color: #fff;
+  font-weight: bold;
+  background-color: #ffd233;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.filter-bar {
+  background-color: #fff;
+  display: flex;
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.filter-con {
+  display: flex;
+}
+
+.search-bar {
+  margin-top: 20px;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 5px;
+  font-size: 18px;
+}
+
+.search-bth {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #3e91ff;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 8px;
+}
+
+.combo {
+  margin: 0 350px;
+}
+
+.combo label {
+  color: #565656;
+}
+
+select {
+  font-size: 16px;
+  width: 250px;
+  background-color: #eaeaea;
+  color: #000;
+  border: 2px solid #aaaaaa;
+  border-radius: 8px;
+  text-align: center;
+  padding: 8px;
+}
+
+.table-con {
+  border: 15px solid #fff;
+  border-radius: 8px;
+}
+
+.table {
+  margin: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pos-table {
+  background-color: #fff;
+  overflow: hidden;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table .head th {
+  padding: 26px 150px;
+}
+
+table .row td {
+  font-weight: bold;
+  padding: 14px 150px;
+}
+
+table .row:nth-child(odd) {
+  background-color: #eaeaea;
+}
