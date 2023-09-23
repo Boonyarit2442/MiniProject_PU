@@ -6,12 +6,13 @@
     <title>Position</title>
     <link rel="stylesheet" href="./posstyle.css" />
   </head>
-  <body>
+  <body class="">
     <?php require_once('../../layout/_layout.php')?>
+    
     <section class="feature">
       <div class="feature-con">
         <div class="feature-text">ตำแหน่ง</div>
-        <div class="add-feature">+ เพิ่มตำแหน่ง</div>
+        <button class="add-feature" type="submit">+ เพิ่มตำแหน่ง</button>
       </div>
     </section>
 
@@ -39,7 +40,7 @@
         </div>
       </nav>
     </section>
-    <div class="table-con">
+    <div class="container-xxl">
       <table class="table table-striped table-hover">
         <thead>
           <tr>
@@ -55,16 +56,16 @@
             <td>6411130001</td>
             <td>Developer</td>
             <td>
-              <img
+              <a href="#"><img
                 src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png"
                 width="22"
                 height="22"
-              />
-              <img
+              /></a>
+              <a href="#"><img
                 src="https://cdn-icons-png.flaticon.com/128/2496/2496733.png"
                 width="22"
                 height="22"
-              />
+              /></a>
             </td>
           </tr>
           <tr>
@@ -72,16 +73,16 @@
             <td>6411130002</td>
             <td>IT</td>
             <td>
-              <img
+            <a href="#"><img
                 src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png"
                 width="22"
                 height="22"
-              />
-              <img
+              /></a>
+              <a href="#"><img
                 src="https://cdn-icons-png.flaticon.com/128/2496/2496733.png"
                 width="22"
                 height="22"
-              />
+              /></a>
             </td>
           </tr>
           <tr>
@@ -89,16 +90,16 @@
             <td>6411130003</td>
             <td>HR</td>
             <td>
-              <img
+            <a href="#"><img
                 src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png"
                 width="22"
                 height="22"
-              />
-              <img
+              /></a>
+              <a href="#"><img
                 src="https://cdn-icons-png.flaticon.com/128/2496/2496733.png"
                 width="22"
                 height="22"
-              />
+              /></a>
             </td>
           </tr>
           <tr>
@@ -106,16 +107,16 @@
             <td>6411130004</td>
             <td>Programer</td>
             <td>
-              <img
+            <a href="#"><img
                 src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png"
                 width="22"
                 height="22"
-              />
-              <img
+              /></a>
+              <a href="#"><img
                 src="https://cdn-icons-png.flaticon.com/128/2496/2496733.png"
                 width="22"
                 height="22"
-              />
+              /></a>
             </td>
           </tr>
         </tbody>
