@@ -1,7 +1,5 @@
 <?php
-session_start();
-if(isset($_SESSION['username']) || isset($_SESSION['id']))
-    header('location: ../../index.php');
+include "kongwaritApi.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +8,7 @@ if(isset($_SESSION['username']) || isset($_SESSION['id']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Login</title>
 
 </head>
@@ -20,7 +19,7 @@ if(isset($_SESSION['username']) || isset($_SESSION['id']))
 
         <form class="login-form" action="kongwarit.php" method="POST">
             <input type="text" placeholder="Username" name="username">
-            <input type="password" placeholder="Password" password="password">
+            <input type="password" placeholder="Password" name="password">
             <a href="#">Foget your password?</a>
             <button type="submit">LOGIN</button>
         </form>
