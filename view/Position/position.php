@@ -38,6 +38,55 @@
           </div>
         </div>
       </nav>
-    </section>
+    </section>   
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"><input type="checkbox"></th>
+      <th scope="col">รหัส</th>
+      <th scope="col">ชื่อตำแหน่ง</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><input type="checkbox"></th>
+      <td>6411130001</td>
+      <td>Developer</td>
+      <td>
+        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
+        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>6411130002</td>
+      <td>IT</td>
+      <td>
+        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
+        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>6411130003</td>
+      <td>HR</td>
+      <td>
+        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
+        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>6411130004</td>
+      <td>Programer</td>
+      <td>
+        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
+        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
+      </td>
+    </tr>
+  </tbody>
+</table>
+
   </body>
 </html>

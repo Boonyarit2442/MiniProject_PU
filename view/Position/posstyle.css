@@ -80,37 +80,3 @@ select {
   text-align: center;
   padding: 8px;
 }
-
-.table-con {
-  border: 15px solid #fff;
-  border-radius: 8px;
-}
-
-.table {
-  margin: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.pos-table {
-  background-color: #fff;
-  overflow: hidden;
-}
-
-table {
-  border-collapse: collapse;
-}
-
-table .head th {
-  padding: 26px 150px;
-}
-
-table .row td {
-  font-weight: bold;
-  padding: 14px 150px;
-}
-
-table .row:nth-child(odd) {
-  background-color: #eaeaea;
-}
