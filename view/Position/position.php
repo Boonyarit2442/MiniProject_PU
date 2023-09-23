@@ -55,34 +55,34 @@
       <td>Developer</td>
       <td>
         <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
-        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
+        <img src="https://cdn-icons-png.flaticon.com/128/2496/2496733.png" width="22" height="22">
       </td>
     </tr>
     <tr>
-      <th scope="row">2</th>
+      <th scope="row"><input type="checkbox"></th>
       <td>6411130002</td>
       <td>IT</td>
       <td>
         <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
-        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
+        <img src="https://cdn-icons-png.flaticon.com/128/2496/2496733.png" width="22" height="22">
       </td>
     </tr>
     <tr>
-      <th scope="row">3</th>
+      <th scope="row"><input type="checkbox"></th>
       <td>6411130003</td>
       <td>HR</td>
       <td>
         <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
-        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
+        <img src="https://cdn-icons-png.flaticon.com/128/2496/2496733.png" width="22" height="22">
       </td>
     </tr>
     <tr>
-      <th scope="row">3</th>
+      <th scope="row"><input type="checkbox"></th>
       <td>6411130004</td>
       <td>Programer</td>
       <td>
         <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
-        <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
+        <img src="https://cdn-icons-png.flaticon.com/128/2496/2496733.png" width="22" height="22">
       </td>
     </tr>
   </tbody>
