@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./posstyle.css" />
   </head>
   <body>
+  <?php require_once('../../layout/_layout.php')?>
     <section class="feature">
       <div class="feature-con">
         <div class="feature-text">ตำแหน่ง</div>
