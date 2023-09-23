@@ -40,9 +40,9 @@ function create($conn, $data){
         $stmt = $conn->prepare("INSERT INTO POSITION (ID_PST, NAME_PST, JOB_DETEL) VALUES (:ID, :NAME, :JOBDETEL)");
         $stmt->bindParam(':ID', $ID, PDO::PARAM_STR);
         $stmt->bindParam(':NAME', $NAME, PDO::PARAM_STR);
-        $stmt->bindParam(':JOB_DETEL', $JOB_DETEL, PDO::PARAM_STR); 
+        $stmt->bindParam(':JOBDETEL', $JOB_DETEL, PDO::PARAM_STR); 
         $stmt->execute();
-       echo "<script>window.location = 'http://203.188.54.9/~u6411800010/view/Postion/position.php'</script>";
+       echo "<script>window.location = 'http://203.188.54.9/~u6411800010/view/Position/position.php'</script>";
         
     } catch (PDOException $e) {
         echo $e->getMessage();
@@ -59,7 +59,7 @@ try {
     $stmt->bindParam(2, $JOB_DETEL, PDO::PARAM_STR_CHAR);
     $stmt->bindParam(3, $ID, PDO::PARAM_STR_CHAR);
     $stmt->execute();
-    echo "<script>window.location = 'http://203.188.54.9/~u6411800010/view/Postion/position.php'</script>";
+    echo "<script>window.location = 'http://203.188.54.9/~u6411800010/view/Position/position.php'</script>";
 
     
 } catch(PDOException $e){
@@ -77,5 +77,6 @@ function delete($conn, $data){
         $e->getMessage();
    } 
    echo "<script>window.location = 'http://203.188.54.9/~u6411800010/view/Postion/position.php'</script>";
+   //header("Location : ../view/Position/position.php");
 }
 ?>

@@ -119,7 +119,7 @@
           <div class="nav-link bg-light " href="#">Link 2</div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><img class="icon-logout" src="https://cdn-icons-png.flaticon.com/128/11638/11638572.png" width="27" height="32"></a>
+          <a class="nav-link" href="controler/logout.php"><img class="icon-logout" src="https://cdn-icons-png.flaticon.com/128/11638/11638572.png" width="27" height="32"></a>
         </li>
       </ul>
     </div>

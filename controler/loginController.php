@@ -1,6 +1,6 @@
 <?php
 
-include '../../controler/ConnectDB.php';
+include 'ConnectDB.php';
 session_start();
 if(isset($_SESSION['username']) || isset($_SESSION['id']))
     header('location: ../../index.php');
