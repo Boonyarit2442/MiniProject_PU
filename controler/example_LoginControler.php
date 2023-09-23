@@ -78,5 +78,4 @@ function delete($conn, $data){
    } 
     echo "<script>window.location = 'http://203.188.54.9/~u6411800010/view/example/example_Login.php'</script>";
 }
-
 ?>
