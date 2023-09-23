@@ -1,1 +1,3 @@
-select * from Login ;
+CREATE TABLE LOGIN (
+    NAME_ID 
+)

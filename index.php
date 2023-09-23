@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-   <?php echo "rit" ?> 
+    <?php require_once('layout/_layout.php'); ?>
 </body>
 </html>
