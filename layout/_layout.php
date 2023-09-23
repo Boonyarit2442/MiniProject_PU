@@ -13,7 +13,8 @@
   <!--<script src="bar.js"></script>-->
 </head>
 
-<body>  <!-- navigater Bar -->
+<body style="height: 60px;">  
+<!-- navigater Bar -->
 <style>
 #menu__toggle {
     opacity: 0;
