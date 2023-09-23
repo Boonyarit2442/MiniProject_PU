@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-   <?php echo "rit" ?> 
+    สร้าง layout
 </body>
 </html>

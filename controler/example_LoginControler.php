@@ -1,20 +1,5 @@
 <?php
-$server         = "203.188.54.7";
-$db_username    = "inno094";
-$db_password    = "P06D245";
-$service_name   = "";
-$sid            = "database";
-$port           = 1521;
-$dbtns          = "(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = $server)(PORT = $port)) (CONNECT_DATA = (SERVICE_NAME = $service_name) (SID = $sid)))";
-$Data;
-try{
-    $conn = new PDO("oci:dbname=".$dbtns, $db_username, $db_password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //echo "Success";
-}catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
-}
-
+require_once('ConnectDB.php');
 $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     case 'GET':
@@ -27,6 +12,7 @@ switch ($method) {
         update($conn,$_POST);
         //echo json_encode($_POST);
        }elseif($_POST['_method']==="DELETE"){
+        delete($conn,$_POST);
        } 
         break;
     default:
@@ -34,7 +20,7 @@ switch ($method) {
         echo json_encode(array("message" => "Method not allowed."));
 }
 
-
+//function for select ALL data
 function getAll($conn){
    try {
         $stmt = $conn->prepare("SELECT * FROM LOGIN");
@@ -45,7 +31,7 @@ function getAll($conn){
     } 
     return $result; 
 }
-
+//fuction for Create data
 function create($conn, $data){
     $ID = $data['NAME_ID'];
     $USER = $data['USER1'];
@@ -56,41 +42,41 @@ function create($conn, $data){
         $stmt->bindParam(':USER1', $USER, PDO::PARAM_STR);
         $stmt->bindParam(':PASSWORD', $PASSWORD, PDO::PARAM_STR); 
         $stmt->execute();
-       echo "<script>window.location = 'http://203.188.54.9/~u6411800010'</script>";
+       echo "<script>window.location = 'http://203.188.54.9/~u6411800010/view/example/example_Login.php'</script>";
         
     } catch (PDOException $e) {
         echo $e->getMessage();
     }
 }
-
+//function for update data
 function update($conn,$data){
     $ID = $data['NAME_ID'];
     $USER = $data['USER1'];
-    echo "rit";
+    $PASSWROD = $data['PASSWORD'];
 try {
-    $stmt = $conn->prepare("UPDATE LOGIN SET USER1 = :USER WHERE NAME_ID = :ID1");
-    $stmt->bindParam(':USER', $USER, PDO::PARAM_STR);
-    $stmt->bindParam(':ID1', $ID, PDO::PARAM_STR);
+    $stmt = $conn->prepare("UPDATE LOGIN SET  USER1 = ? , PASSWORD = ? WHERE NAME_ID = ?");
+    $stmt->bindParam(1, $USER, PDO::PARAM_STR_CHAR);
+    $stmt->bindParam(2, $PASSWROD, PDO::PARAM_STR_CHAR);
+    $stmt->bindParam(3, $ID, PDO::PARAM_STR_CHAR);
     $stmt->execute();
-    $result = $stmt->fetchAll();
-    echo http_response_code(202);
+    echo "<script>window.location = 'http://203.188.54.9/~u6411800010/view/example/example_Login.php'</script>";
+
     
 } catch(PDOException $e){
-    echo $e->getMessage();
+    echo $e->getMessage()." ".$e->getLine();
 }
-
 }
-
-function delete($conn, $ssn){
-    $stmt = $conn->prepare("DELETE FROM employee WHERE ssn = :ssn");
-    $stmt->bindParam(':ssn', $ssn, PDO::PARAM_INT);
-
-    if ($stmt->execute()) {
-        echo json_encode(array("message" => "Employee deleted."));
-    } else {
-        http_response_code(500); // Internal Server Error
-        echo json_encode(array("message" => "Unable to delete Employee."));
-    }
+//fuction for delete data
+function delete($conn, $data){
+    $ID = $data['KYE'];
+   try {
+    $stmt = $conn->prepare("DELETE FROM LOGIN WHERE NAME_ID = :ID");
+    $stmt->bindParam(':ID', $ID, PDO::PARAM_STR);
+    $stmt->execute();
+   } catch (PDOException $e) {
+        $e->getMessage();
+   } 
+    echo "<script>window.location = 'http://203.188.54.9/~u6411800010/view/example/example_Login.php'</script>";
 }
 
 ?>
