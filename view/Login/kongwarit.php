@@ -1,30 +1,30 @@
 <?php
-
-include '../../controler/ConnectDB.php';
 session_start();
 if(isset($_SESSION['username']) || isset($_SESSION['id']))
     header('location: ../../index.php');
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $query = "SELECT * FROM LOGIN WHERE USER1 = :1 AND password = :2";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(':1', $username, PDO::PARAM_STR);
-    $stmt->bindParam(':2', $password, PDO::PARAM_STR);
-    $stmt->execute();
-    $result = $stmt->fetch();
-    
-    if ($result) {
-        $_SESSION['id'] = $result['NAME_ID'];
-        $_SESSION["username"] = $username;
-        $_SESSION['start'] = time();
-        $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
-        header("Location: ../../index.php"); 
-        exit;
-    } else {
-        header("location: login.html");
-    }
-}
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
+
+</head>
+<body>
+    <div class  = "login-main">
+        <h2>Login</h2>
+        <h3>Enter your Username & Password</h3>
+
+        <form class="login-form" action="kongwarit.php" method="POST">
+            <input type="text" placeholder="Username" name="username">
+            <input type="password" placeholder="Password" password="password">
+            <a href="#">Foget your password?</a>
+            <button type="submit">LOGIN</button>
+        </form>
+        
+    </div>
+</body>
+</html>
