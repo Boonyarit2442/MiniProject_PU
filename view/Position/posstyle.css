@@ -80,3 +80,7 @@ select {
   text-align: center;
   padding: 8px;
 }
+
+.table-con {
+  width: 1420px;
+}
