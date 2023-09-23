@@ -26,6 +26,7 @@
   </style>
 </head>
 <body>
+   <?php require_once('../../layout/_layout.php')?>
     <nav class="navbar navbar-expand-sm  "></nav>
     <header class="p-3 bg-primary text-light">
         <div class="container">

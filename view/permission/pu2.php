@@ -1,30 +1,4 @@
-<!DOCTYPE html>
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th {
-            text-align: center;
-            background-color: #ffc107;
-            color: #000000;
-        }
-        td,
-        th {
-            border: 1px solid #868583;
-            padding: 12px;
-        }
-        tr:nth-child(even) {
-            background-color: #ececec;
-        }
-    </style>
-</head>
-<body>
+
     
     <!DOCTYPE html>
 <html lang="en">
@@ -43,6 +17,26 @@
 
 <body style="height: 60px;">  
 <!-- navigater Bar -->
+<?php require_once('../../layout/_layout.php')?>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th {
+        text-align: center;
+        background-color: #ffc107;
+        color: #000000;
+    }
+    td,
+    th {
+        border: 1px solid #868583;
+        padding: 12px;
+    }
+    tr:nth-child(even) {
+        background-color: #ececec;
+    }
+</style>
 <style>
 #menu__toggle {
     opacity: 0;
@@ -275,3 +269,4 @@
         
     
 </body> 
+</html>
