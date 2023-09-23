@@ -39,7 +39,7 @@
         </div>
       </nav>
     </section>   
-    <table class="table">
+<table class="table table-striped-columns">
   <thead>
     <tr>
       <th scope="col"><input type="checkbox"></th>
