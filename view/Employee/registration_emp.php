@@ -56,9 +56,8 @@
                         <div class="input-field">
                             <label>สัญชาติ</label>
                             <select name="nation" id="nation">
-                                <option value="buddhism">พุทธ</option>
-                                <option value="christianity">คริสต์</option>
-                                <option value="islam">อิสลาม</option>
+                                <option value="thai">ไทย</option>
+                                <option value="american">อเมริกากัน</option>
                             </select>
                         </div>
                         <div class="input-field">
