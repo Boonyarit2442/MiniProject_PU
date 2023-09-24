@@ -57,7 +57,7 @@
                             <label>สัญชาติ</label>
                             <select name="nation" id="nation">
                                 <option value="thai">ไทย</option>
-                                <option value="american">อเมริกากัน</option>
+                                <option value="american">อเมริกัน</option>
                             </select>
                         </div>
                         <div class="input-field">
