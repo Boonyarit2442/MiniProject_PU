@@ -7,7 +7,6 @@
     <!--===== CSS =====-->
     <link rel="stylesheet" href="styles_reg.css">
 
-
     <title>Reistration</title>
 </head>
 
@@ -94,7 +93,7 @@
                         </div>
                         <div class="input-field">
                             <label>ที่อยู่</label>
-                            <textarea id="w3review" name="w3review" rows="6" cols="50"></textarea>
+                            <textarea id="address" name="address" rows="6" cols="50"></textarea>
                         </div>
                     </div>
 
