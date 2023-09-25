@@ -1,5 +1,5 @@
 <?php
-include "kongwaritApi.php";
+require_once "../../controler/loginController.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
