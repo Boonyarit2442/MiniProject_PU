@@ -9,27 +9,17 @@
 
     <title>Document</title>
 </head>
-<<<<<<< HEAD
 
 <body>
     <?php require_once('../../layout/_layout.php') ?>
     
     <!-- Bar Menu -->
-=======
-<body>
-    <?php require_once('../../layout/_layout.php') ?>
-
->>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
     <div class="menu-bar container d-flex justify-content-between align-items-center " style="margin-top: 30px;">
         <h2 class="text-primary">ยื่นขอพนักงาน</h2>
         <div class="d-flex flex-row justify-content-center align-items-center">
             <input class="form-control me-3" type="search" placeholder="ค้นหา" aria-label="Search" style="width: 500px;">
             <button class="btn btn-outline-success" type="submit" >Search</button>
-<<<<<<< HEAD
             <a class="btn btn-warning " href="http://203.188.54.9/~u6411800010/view/List_of_requests/Requests.php" role="button" style="width: 150px; margin-left: 15px;">+ เพิ่มพนักงาน</a>
-=======
-            <a class="btn btn-warning " href="#" role="button" style="width: 150px; margin-left: 15px;">+ เพิ่มพนักงาน</a>
->>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
         </div>
     </div>
     <!-- Table -->

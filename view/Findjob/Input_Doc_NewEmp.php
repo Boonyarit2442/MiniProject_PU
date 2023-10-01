@@ -62,7 +62,6 @@
       />
     </div>
 
-<<<<<<< HEAD
     <form action="update.php" method="post" accept-charset="UTF-8">
       <div class="container w-50">
         <div class="ms-5 ps-4">
@@ -75,33 +74,13 @@
             <input name="name"type="text" class="ms-3" style="width: 15vw; height: 3vh" />
             <label for="Name" class="ms-3" >นามสกุล</label>
             <input name="Lname" type="text" class="ms-3" style="width: 15vw; height: 3vh" />
-=======
-    <form action="" method="post">
-      <div class="container w-50">
-        <div class="ms-5 ps-4">
-          <div>
-            <label for="ID_POS">รหัสบัตรประชาชน</label>
-            <input type="text" class="ms-5" style="width: 20vw; height: 3vh" />
-          </div>
-          <div class="mt-3">
-            <label for="Name" class="p-0">ชื่อ</label>
-            <input type="text" class="ms-3" style="width: 15vw; height: 3vh" />
-            <label for="Name" class="ms-3">นามสกุล</label>
-            <input type="text" class="ms-3" style="width: 15vw; height: 3vh" />
->>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
           </div>
 
           <div class="mt-3">
             <label for="SEX">เพศ</label>
-<<<<<<< HEAD
             <input type="radio" name="sex"  value="ชาย" class="ms-4" />
             <label for="SEX">ชาย</label>
             <input type="radio" name="sex"  value="หญิง" class="ms-3" />
-=======
-            <input type="radio" name="sex" id="sex" value="ชาย" class="ms-4" />
-            <label for="SEX">ชาย</label>
-            <input type="radio" name="sex" id="sex" value="หญิง" class="ms-3" />
->>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
             <label for="SEX">หญิง</label>
 
             <label for="NOTIONALITY">ศาสนา</label>
@@ -111,11 +90,7 @@
               style="width: 100px"
               class="text-center ms-2"
             >
-<<<<<<< HEAD
               <option value="พุทธ" >พุทธ</option>
-=======
-              <option value="พุทธ">พุทธ</option>
->>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
               <option value="อิสลาม">อิสลาม</option>
               <option value="คริส">คริส</option>
             </select>
@@ -127,13 +102,8 @@
               class="text-center ms-2"
             >
               <option value="ไทย">ไทย</option>
-<<<<<<< HEAD
               <option value="พม่า" >อิสลาม</option>
               <option value="กัมพูชา" >คริส</option>
-=======
-              <option value="พม่า">อิสลาม</option>
-              <option value="กัมพูชา">คริส</option>
->>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
             </select>
             <label for="RELIGION" class="ms-4">กรุ๊บเลือก</label>
             <select
@@ -142,22 +112,14 @@
               style="width: 100px"
               class="text-center ms-2"
             >
-<<<<<<< HEAD
               <option value="A" >A</option>
-=======
-              <option value="A">A</option>
->>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
               <option value="B">B</option>
               <option value="O">O</option>
             </select>
           </div>
           <div class="mt-3">
             <label for="B_DAY">วันเกิด</label>
-<<<<<<< HEAD
             <input 
-=======
-            <input
->>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
               type="date"
               name="B_DAY"
               id="B_DAY"
@@ -166,11 +128,7 @@
               class="text-center"
             />
             <label for="EMAIL">Email</label>
-<<<<<<< HEAD
             <input 
-=======
-            <input
->>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
               type="email"
               name="EMPIL"
               id="EMAIL"
@@ -181,13 +139,8 @@
           <div class="mt-3">
             <label for="ADDRESS">ที่อยู่</label>
             <br />
-<<<<<<< HEAD
             <textarea 
               name="ADDESS"
-=======
-            <textarea
-              name="ARDESS"
->>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
               id="ARDESS"
               class="mt-2"
               cols="80"
@@ -197,11 +150,7 @@
           <div class="mt-3">
             <label for="ADDRESS">เกี่ยวกับคุณ</label>
             <br />
-<<<<<<< HEAD
             <textarea 
-=======
-            <textarea
->>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
               name="ARDESS"
               id="ARDESS"
               class="mt-2"
@@ -211,13 +160,8 @@
           </div>
         </div>
         <div class="mt-3 text-center">
-<<<<<<< HEAD
           <label for="POSITION" >ตำแหน่ง</label>
           <select name="POSITION"
-=======
-          <label for="POSITION">ตำแหน่ง</label>
-          <select
->>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
             name="POSITION"
             id="POSITION"
             class="ms-4"
@@ -263,10 +207,7 @@
         <div class="mt-5 text-center">
           <label for="DOC" class="ms-4">เอกสารสมัครงาน</label>
           <input type="file" name="DOC" id="DOC" />
-<<<<<<< HEAD
           <button type="submit" name="submit">ยืนยัน</button>
-=======
->>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
         </div>
       </div>
     </form>
