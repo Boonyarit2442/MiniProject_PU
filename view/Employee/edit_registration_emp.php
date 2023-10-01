@@ -25,19 +25,19 @@ require_once('../../controler/employeeController.php');
                     <div class="fields">
                         <div class="input-field">
                             <label> ID พนักงาน</label>
-                            <input type="text" name="ID" id="ID">
+                            <input type="text" name="ID" id="ID" value="<?=$edit[0]['ID_EMP']?> " disabled>
                         </div>
                         <div class="input-field">
                             <label>ชื่อ</label>
-                            <input type="text" name="NAME" id="NAME">
+                            <input type="text" name="NAME" id="NAME" value="<?=$edit[0]['NAME']?>">
                         </div>
                         <div class="input-field">
                             <label>นามสกุล</label>
-                            <input type="text" name="LNAME" id="LNAME">
+                            <input type="text" name="LNAME" id="LNAME" value="<?=$edit[0]['L_NAME']?>">
                         </div>
                         <div class="input-field">
                             <label>วันเกิด</label>
-                            <input type="date" name="B_DAY" id="B_DAY">
+                            <input type="date" name="B_DAY" id="B_DAY" value="<?=$edit[0]['B_DAY']?>">
                         </div>
                         <div class="input-field">
                             <label>เพศ</label>
@@ -48,11 +48,11 @@ require_once('../../controler/employeeController.php');
                         </div>
                         <div class="input-field">
                             <label>อีเมล</label>
-                            <input type="text" name="EMAIL" id="EMAIL">
+                            <input type="text" name="EMAIL" id="EMAIL" value="<?=$edit[0]['EMAIL']?>">
                         </div>
                         <div class="input-field">
                             <label>เบอร์โทร</label>
-                            <input type="text" name="TEL" id="TEL">
+                            <input type="text" name="TEL" id="TEL" value="<?=$edit[0]['TEL']?>">
                         </div>
                         <div class="input-field">
                             <label>สัญชาติ</label>
@@ -63,7 +63,7 @@ require_once('../../controler/employeeController.php');
                         </div>
                         <div class="input-field">
                             <label>เลขบัตรประชาชน</label>
-                            <input type="text" name="ID_POS" id="ID_POS">
+                            <input type="text" name="ID_POS" id="ID_POS" value="<?=$edit[0]['ID_POS']?>"> 
                         </div>
                         <div class="input-field">
                             <label>แผนก</label>
@@ -83,7 +83,7 @@ require_once('../../controler/employeeController.php');
                         </div>
                         <div class="input-field">
                             <label>เงินเดือน</label>
-                            <input type="text" name="SAL" id="SAL">
+                            <input type="text" name="SAL" id="SAL" value="<?=$edit[0]['SAL']?>">
                         </div>
                         <div class="input-field">
                             <label>วันที่เริ่มทำงาน</label>
@@ -95,15 +95,15 @@ require_once('../../controler/employeeController.php');
                         </div>
                         <div class="input-field">
                             <label>ที่อยู่</label>
-                            <textarea id="ADDRESS" name="ADDRESS" rows="6" cols="50"></textarea>
+                            <textarea id="ADDRESS" name="ADDRESS" rows="6" cols="50" value="<?=$edit[0]['ADDRESS']?>"></textarea>
                         </div>
                     </div>
 
                     <div class="btn-all">
-                        <button class="btn-submit" value="ADD" name="_method">
+                        <button class="btn-submit" value="EDIT" name = "_method">
                             <div>ตกลง</div>
                         </button>  
-                        <button class="btn-cansal" >
+                        <button class="btn-cansal">
                             <div>ยกเลิก</div>
                         </button>
                     </div>

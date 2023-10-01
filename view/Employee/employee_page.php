@@ -5,8 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee</title>
+    <!-- Link CSS-->
     <link rel="stylesheet" href="styles_emp.css">
-    <!--link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"-->
+
+    <!-- Link Sweetalert2" -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Link Bootstrap 5-->
     <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -16,7 +21,11 @@
 </head>
 
 <body>
-    <?php require_once('../../layout/_layout.php')?>
+    <?php 
+    require_once('../../layout/_layout.php'); 
+    require_once('../../controler/employeeController.php');
+    
+    ?>
     <!-- ตำแหน่ง และ serth -->
     <div class="container ">
         <div class="row">
@@ -24,11 +33,11 @@
                 <h2 class=" mt-2 mb-2">พนักงานบริษัท</h2>
             </div>
             <div class="col ps-0 pe-0"></div>
-            <div class="col ps-0 " >
-                <a class="btn btn-warning mt-2" href="#" role="button">+ เพิ่มพนักงาน</a>
+            <div class="col ps-0 ">
+                <a class="btn btn-warning mt-2" href="registration_emp.php" role="button">+ เพิ่มพนักงาน</a>
             </div>
         </div>
-        <div class="container  ">
+        <div class="container ">
             <div class="row">
                 <div class="col ps-0 pe-5 col-7">
                     <label></label>
@@ -40,8 +49,8 @@
                 <div class="col ps-0">
                     <label class="fw-bold">แผนก</label>
                     <div class="dropdown ">
-                        <button class="btn btn-secondary dropdown-toggle bg-primary" type="button" id="dropdownMenuButton"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle bg-primary" type="button"
+                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown button
                         </button>
                         <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton">
@@ -54,8 +63,8 @@
                 <div class="col ps-0 ">
                     <label class="fw-bold">ตำแหน่ง</label>
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle bg-primary" type="button" id="dropdownMenuButton"
-                            data-bs-toggle="dropdown" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle bg-primary" type="button"
+                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown button
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -87,66 +96,65 @@
                 </tr>
             </thead>
             <tbody>
+                <?php for ($i=0; $i < count($Data); $i++) { ?>
                 <tr>
                     <td scope="row">
                         <div class="form-check ">
                             <input class="form-check-input " type="checkbox" value="" id="flexCheckIndeterminate">
                         </div>
                     </td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    <td><?=$Data[$i]['NAME']." ".$Data[$i]['L_NAME']?></td>
+                    <td><?=$Data[$i]['EMAIL']?></td>
+                    <td><?=$Data[$i]['NAME_DEP']?></td>
+                    <td><?=$Data[$i]['NAME_PST']?></td>
+                    <td><?=$Data[$i]['ID_EMP']?></td>
                     <td>
-                        <a href="#">
+                        <a href="edit_registration_emp.php?id=<?= $Data[$i]['ID_EMP'] ?>" > 
                             <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
                         </a>
-                        <a href="#">
-                            <img src="https://cdn-icons-png.flaticon.com/128/2496/2496733.png" width="22" height="22">
-                        </a>
+                        <button onclick="clickalert()" id="test" style="border : 0; padding: 0;"><img src="https://cdn-icons-png.flaticon.com/128/2496/2496733.png" width="22" height="22"></button>
                     </td>
                 </tr>
-                <tr>
-                    <td scope="row">
-                        <div class="form-check ">
-                            <input class="form-check-input " type="checkbox" value="" id="flexCheckIndeterminate">
-                        </div>
-                    </td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>
-                        <a href="#">
-                            <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
-                        </a>
-                        <a href="#">
-                            <img src="https://cdn-icons-png.flaticon.com/128/2496/2496733.png" width="22" height="22">
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">
-                        <div class="form-check ">
-                            <input class="form-check-input " type="checkbox" value="" id="flexCheckIndeterminate">
-                        </div>
-                    </td>
-                    <td>Larry the Bird</td>
-                    <td>Jin</td>
-                    <td>@twitter</td>
-                    <td>Larry the Bird</td>
-                    <td>Jin</td>
-                    <td>
-                        <a href="#">
-                            <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
-                        </a>
-                    </td>
-                </tr>
+                <?php } ?>
             </tbody>
         </table>
     </div>
+
+    <script>
+        function clickalert(){      
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true,
+            backdrop: `
+                url("https://sweetalert2.github.io/images/nyan-cat.gif")
+                left top
+                no-repeat  `
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                Swal.fire(
+                'Cancelled',
+                'Your imaginary file is safe :)',
+                'error'
+                )
+            }
+            })
+        }
+    </script>
+
 </body>
 
 </html>

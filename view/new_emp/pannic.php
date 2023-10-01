@@ -1,16 +1,20 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        .form-select {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
 </head>
-<html>
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</head> 
-    
     <header class="p-3 bg-Primary text-light">
         <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -34,144 +38,122 @@
         </div>
       </header>
       
-      <body class="">
-        
-        <main>
-          <div class="container">
+      <body onload="loadDoc()"  onload="search()" class="">
+      <div class="container">
         
             <h1 style="font-size:30px"><p style="color:blue">ข้อมูลผู้สมัคร</p></h1>
-            <header class="py-3 mb-3 border-bottom">
-              
-            
+
                   <div class="d-flex align-items-center">
                     <form class="w-500 me-3" role="search">
-                      <input type="search" class="form-control" placeholder="ค้นหาผู้สมัคร..." aria-label="Search">
+                      <input style="margin-bottom:10px"type="text" id="txt_search"class="form-control"  placeholder="ค้นหาผู้สมัคร...">
                     </form>
                     <div class="d-flex align-items-center">
                         <form class="w-500 me-3" role="search">
-                          <input type="search" class="form-control" placeholder="ค้นหาคุณสมบัติผู้สมัคร..." aria-label="Search">
+                        <input style="margin-bottom:10px" type="text" class="form-control" placeholder="ค้นหาคุณสมบัติผู้สมัคร...">
+                         
                         </form>
                         </div>
                     
-                    </div>
-                    
-                  
-                  
-                
-                
-              </header>
-              <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                แผนกที่สมัคร
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="#">1</a></li>
-                  <li><a class="dropdown-item" href="#">2</a></li>
-                  <li><a class="dropdown-item" href="#">3</a></li>
-                </ul>
-                
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                สถานะ
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="#">1</a></li>
-                      <li><a class="dropdown-item" href="#">2</a></li>
-                      <li><a class="dropdown-item" href="#">3</a></li>
-                    </ul>
-                    
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                ตำแหน่งที่สมัคร
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="#">1</a></li>
-                      <li><a class="dropdown-item" href="#">2</a></li>
-                      <li><a class="dropdown-item" href="#">3</a></li>
-                    </ul>
-                    <button type="button" class="btn btn-primary">search</button>
-              </div>
-            </div>
-           
-        </main>
-        
-          <div class="container">
-        
+                    </div> 
+        <script>
+          function search(){
+            $.ajax({
+              type:"post",
+              dataType:"json",
+              url:"http://203.188.54.9/~u6411800010/controler/DATA_NEW_EMP.php",
+              data:{
+                keyword: $('#txt_search').val(),
+                type:$("#sel_search").val()
+              },success:function(response){
+                console.log("good",response)
+              },error:function(err){
+                console.log("bad",err)
+              }
+            })
+          }
+          function loadDoc() {
+        let xhttp = new XMLHttpRequest();
+           xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let data = JSON.parse(this.responseText);
+                console.log(data);
+                for(i=0;i<data.length;i++){
+                  document.getElementById('info').innerHTML +=`
+                  <tr>
+                    <th>${i+1}</th>
+                    <td>${data[i].NAME_NEMP} ${data[i].LNAME_NEMP}</td>
+                    <td>${data[i].EMAIL}</td>
+                    <td>${data[i].ID_POS}</td>
+                    <td>
+                    <a href="#">
+                        <img
+                        src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png"
+                        width="22"
+                        height="22"
+                      />
+                        </a></td>
+                  </tr>`;
+                }
+            }
+        }
+        xhttp.open("GET", 'http://203.188.54.9/~u6411800010/controler/DATA_NEW_EMP.php', true);
+        xhttp.send();
+    }
+        </script>
+        <main>
+        <div class="d-flex align-items-center">
+    <div class="me-3">
+        <select class="form-select" id="sel_search">
+            <option value="" selected disabled> แผนกที่สมัคร </option>
+            <option value="name" >ชื่อ</option>
+            <option value="student_surname" >นามสกุล</option>
+            <option value="student_branch" >สาขา</option>
+        </select>
+    </div>
+    <div class="me-3">
+        <select class="form-select" name="select" >
+        <option value="" selected disabled> แผนกที่สมัคร </option>
+            <option value="name" >ผ่าน</option>
+            <option value="student_surname" >ไม่ผ่าน</option>
+            <option value="student_branch" >รอ</option>
+        </select>
+    </div>
+    <div class="me-3">
+        <select class="form-select" name="select" >
+        <option value="name" >ผ่าน</option>
+            <option value="student_surname" >ไม่ผ่าน</option>
+            <option value="student_branch" >รอ</option>
+        </select>
+    </div>
+    <div>
+        <button onload="search()" type="submit" name="submit" class="btn btn-success">search</button>
+    </div>
+</div>
+
+
+            
+        </div>
+
+        <div class="container">
             <table class="table">
                 <thead>
-                  <tr>
-                    <th scope="col">ลำดับที่</th>
-                    <th scope="col">ชื่อ-นามสกุล</th>
-                    <th scope="col">อีเมล-แอดเดรส</th>
-                    <th scope="col">แผนกที่สมัคร</th>
-                    <th scope="col">ตำแหน่งที่สมัคร</th>
-                    <th scope="col">สถานะ</th>
-                    <th scope="col">บุ๊คกิ้ง</th>
-                  </tr>
+                    <tr>
+                        <th scope="col">ลำดับที่</th>
+                        <th scope="col">ชื่อ-นามสกุล</th>
+                        <th scope="col">อีเมล-แอดเดรส</th>
+                        <th scope="col">แผนกที่สมัคร</th>
+                        <th scope="col">ตำแหน่งที่สมัคร</th>
+                        <th scope="col">สถานะ</th>
+                        <th scope="col">บุ๊คกิ้ง</th>
+                    </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>ปุรินทร์  มิตรอำพันธ์</td>
-                    <td>bungpu@mut.ac.th</td>
-                    <td>ดูแลองค์กร</td>
-                    <td>พ่อบ้าน</td>
-                    <td>รอนัดวันสัมภาษณ์</td>
-                    <td>
-                        <a href="#">
-                        <img
-                        src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png"
-                        width="22"
-                        height="22"
-                      />
-                        </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>ภัททรพล  ฉันทประสิทธิ์</td>
-                    <td>pattarapol@mut.ac.th</td>
-                    <td>ไอที</td>
-                    <td>ดูแลเครือข่าย</td>
-                    <td>ผ่าน</td>
-                    <td>
-                        <a href="#">
-                        <img
-                        src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png"
-                        width="22"
-                        height="22"
-                      />
-                        </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>จิราวัฒน์ สรรพวิทยา</td>
-                    <td>jirawat@mut.ac.th</td>
-                    <td>ไอที</td>
-                    <td>ต่่อสายแลน</td>
-                    <td>ผ่าน</td>
-                    <td>
-                        <a href="#">
-                        <img
-                        src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png"
-                        width="22"
-                        height="22"
-                      />
-                         </a>
-                    </td>
-                  </tr>
-                 
+                <tbody id="info">
+                    <!-- ข้อมูลผู้สมัครจะถูกแสดงที่นี่ -->
                 </tbody>
-              </table>
-                  
-                  
-                </tbody>
-              </table>
-                    
-                    </div>
-                  </div>
-          
-        
-        
-      </main>
-      
+            </table>
+        </div>
+    </main>
+
+</body>
+
 </html>

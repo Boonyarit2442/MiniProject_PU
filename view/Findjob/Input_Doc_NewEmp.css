@@ -1,0 +1,9 @@
+.divcoll{
+    background-color:#F0F0F0;
+    width: 900px;
+    height: 6vh;
+}
+input , select , textarea{
+    border-radius: 19px;
+    border: 2px solid #c4c4c4;
+}
