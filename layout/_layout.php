@@ -153,12 +153,24 @@
                     <span>แผนก</span>
                   </a>
                 </li>
+<<<<<<< HEAD
+=======
+                <li class="nav-item ms-3 ">
+                  <a href="#" class="nav-link text-light">
+                    <span>เบอร์โทร</span>
+                  </a>
+                </li>
+>>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
                 <li class="nav-item ms-3"><a href="http://203.188.54.9/~u6411800010/view/permission/pu.php"
                     class="nav-link text-light">
                     <span>สิทธิ์การเข้าถึง</span>
                   </a>
                 </li>
+<<<<<<< HEAD
                 <li class="nav-item ms-3"><a href="http://203.188.54.9/~u6411800010/view/feature/feature.php"
+=======
+                <li class="nav-item ms-3"><a href="http://203.188.54.9/~u6411800010/view/permission/pu.php"
+>>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
                     class="nav-link text-light">
                     <span>จัดการคุณสมบัติแผนก</span>
                   </a>
@@ -175,7 +187,11 @@
           </li>
           <hr>
           <li class="mt-2">
+<<<<<<< HEAD
             <a href="http://203.188.54.9/~u6411800010/view/List_of_requests/List.php">
+=======
+            <a href="http://203.188.54.9/~u6411800010/view/REQ/MREQ.php">
+>>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
               <i class="fa-solid fa-id-card-clip ms-3 me-2 text-light"></i>
               <span class="fw-bold d-inline text-light">ยื่นขอพนักงาน</span>
             </a>

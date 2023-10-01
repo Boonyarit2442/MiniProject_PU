@@ -19,9 +19,15 @@ require_once('../../controler/employeeController.php');
         <form action="../../controler/employeeController.php" method="POST">
             <div class="form-detail-emp">
                 <div class="detail-emp">
+<<<<<<< HEAD
                     <!--<div><img src="https://rare-gallery.com/thumbs/128750-cute-girl-hd-4k.jpg" alt="" width="95"
                             height="123 "></div>-->
                     <span class="title">เพิ่มข้อมูลพนักงาน</span>
+=======
+                    <div><img src="https://rare-gallery.com/thumbs/128750-cute-girl-hd-4k.jpg" alt="" width="95"
+                            height="123 "></div>
+                    <span class="title">ข้อมูลพนักงาน</span>
+>>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
                     <div class="fields">
                         <div class="input-field">
                             <label> ID พนักงาน</label>
@@ -42,8 +48,13 @@ require_once('../../controler/employeeController.php');
                         <div class="input-field">
                             <label>เพศ</label>
                             <select name="SEX" id="SEX" >
+<<<<<<< HEAD
                                 <option value="M">ชาย</option>
                                 <option value="F">หญิง</option>
+=======
+                                <option value="male">ชาย</option>
+                                <option value="female">หญิง</option>
+>>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
                             </select>
                         </div>
                         <div class="input-field">
@@ -57,8 +68,13 @@ require_once('../../controler/employeeController.php');
                         <div class="input-field">
                             <label>สัญชาติ</label>
                             <select name="NATIONALITY" id="NATIONALITY">
+<<<<<<< HEAD
                                 <option value="Thai">ไทย</option>
                                 <option value="American">อเมริกัน</option>
+=======
+                                <option value="thai">ไทย</option>
+                                <option value="american">อเมริกัน</option>
+>>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
                             </select>
                         </div>
                         <div class="input-field">

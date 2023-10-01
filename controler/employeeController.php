@@ -25,14 +25,22 @@ switch ($method) {
         echo json_encode(array("message" => "Method not allowed."));
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
 function getSingle($conn){
     if (isset($_GET['id'])) {
         $employeeId = $_GET['id'];
     }
     try {
+<<<<<<< HEAD
          $stmt = $conn->prepare("SELECT * FROM EMPLOYEE WHERE ID_EMP = :ID");
          $stmt->bindParam(':ID', $employeeId, PDO::PARAM_STR);
+=======
+         $stmt = $conn->prepare("SELECT * FROM EMPLOYEE WHERE ID_EMP = ?");
+         $stmt->bindParam(1, $employeeId, PDO::PARAM_STR);
+>>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
          $stmt->execute();
          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
      } catch (PDOException $e) {
@@ -118,11 +126,16 @@ function create($conn, $data){
 }
 //function for update data
 function update($conn,$data){
+<<<<<<< HEAD
     $ID = $data['ID'];
+=======
+    $ID_POS = $data['ID_POS'];
+>>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
     $NAME = $data['NAME'];
     $LNAME = $data['LNAME'];
     $SEX = $data['SEX'];
     $EMAIL = $data['EMAIL'];
+<<<<<<< HEAD
     $B_DAY =  date("m-d-Y", strtotime($data['B_DAY']));
     $NATIONALITY = $data['NATIONALITY'];
     $STARTDATE = date("m-d-Y", strtotime($data['STARTDATE']));
@@ -140,12 +153,35 @@ try {
     PSTNO = ? , SAL = ? , ADDRESS = ? , TEL = ? , ID_POS = ?
     WHERE ID_EMP = ?");
     $stmt->bindParam(1, $ID, PDO::PARAM_STR);
+=======
+    $B_DAY = $data['B_DAY'];
+    $NATIONALITY = $data['NATIONALITY'];
+    $DATE_START = $data['DATE_START'];
+    $DEPNO = $data['DEPNO'];
+    $ID_LEAD = $data['ID_LEAD'];
+    $PSTNO = $data['PSTNO'];
+    $SAL = $data['SAL'];
+    $PERMIS = $data['PERMIS'];
+    $USER_ID = $data['USER_ID'];
+    $PASSWORD = $data['PASSWORD'];
+    $ADDRESS = $data['ADDRESS'];
+    $TEL = $data['TEL'];
+try {
+    $stmt = $conn->prepare("UPDATE EMPLOYEE 
+    SET  ID_POS = ? , NAME = ? , LNAME = ?  , SEX = ? , EMAIL = ? , 
+    B_DAY = ? , NATIONALITY = ? , DATE_START = ? , DEPNO = ? , ID_LEAD = ? , 
+    PSTNO = ? , SAL = ? , PERMIS = ? , USER_ID = ? ,PASSWORD = ? , ADDRESS = ? ,
+    TEL = ? 
+    WHERE ID_EMP = ?");
+    $stmt->bindParam(1, $ID_POS, PDO::PARAM_STR);
+>>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
     $stmt->bindParam(2, $NAME, PDO::PARAM_STR);
     $stmt->bindParam(3, $LNAME, PDO::PARAM_STR);
     $stmt->bindParam(4, $SEX, PDO::PARAM_STR);
     $stmt->bindParam(5, $EMAIL, PDO::PARAM_STR);
     $stmt->bindParam(6, $B_DAY, PDO::PARAM_STR); 
     $stmt->bindParam(7, $NATIONALITY, PDO::PARAM_STR);
+<<<<<<< HEAD
     $stmt->bindParam(8, $STARTDATE, PDO::PARAM_STR);
     $stmt->bindParam(9, $ENDDATE, PDO::PARAM_STR);
     $stmt->bindParam(10, $DEPNO, PDO::PARAM_STR); 
@@ -155,6 +191,18 @@ try {
     $stmt->bindParam(14, $TEL, PDO::PARAM_STR);   
     $stmt->bindParam(15, $ID_POS, PDO::PARAM_STR);
     $stmt->bindParam(16, $ID, PDO::PARAM_STR);
+=======
+    $stmt->bindParam(8, $DATE_START, PDO::PARAM_STR);
+    $stmt->bindParam(9, $DEPNO, PDO::PARAM_STR); 
+    $stmt->bindParam(10, $ID_LEAD, PDO::PARAM_STR);
+    $stmt->bindParam(11, $PSTNO, PDO::PARAM_STR);
+    $stmt->bindParam(12, $SAL, PDO::PARAM_STR); 
+    $stmt->bindParam(13, $PERMIS, PDO::PARAM_STR);
+    $stmt->bindParam(14, $USER_ID, PDO::PARAM_STR); 
+    $stmt->bindParam(15, $PASSWORD, PDO::PARAM_STR);
+    $stmt->bindParam(16, $ADDRESS, PDO::PARAM_STR);
+    $stmt->bindParam(17, $TEL, PDO::PARAM_STR);  
+>>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
     $stmt->execute();
     echo "<script>window.location = 'http://203.188.54.9/~u6411800010/view/Employee/employee_page.php'</script>";
 

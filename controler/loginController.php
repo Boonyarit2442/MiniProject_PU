@@ -21,7 +21,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset(
         $_SESSION["username"] = $username;
         $_SESSION['start'] = time();
         $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
+<<<<<<< HEAD
         header("Location: ../List_of_requests/List.php"); 
+=======
+        header("Location: ../REQ/MREQ.php"); 
+>>>>>>> 68cf1bd199690421e439c3c3a0b2b30bc9753e91
         exit;
     } else {
         
