@@ -10,6 +10,7 @@
 <body style="height: 60px;">
   <!-- navigater Bar -->
 
+<?php require_once('../../layout/_layout.php')?>
 
 
 

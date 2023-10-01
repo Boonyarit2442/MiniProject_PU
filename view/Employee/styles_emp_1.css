@@ -1,0 +1,12 @@
+html , body{
+    box-sizing:border-box ;
+    background-color: #fff;
+}
+
+a:link {
+    text-decoration: none;
+  }
+  
+button .dropdown-toggle{
+    background-color:   #8d1e1e;
+}

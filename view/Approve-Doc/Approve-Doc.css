@@ -1,0 +1,215 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #eaeaea;
+}
+
+.feature-con {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1320px;
+  margin: 20px auto;
+}
+
+.feature-text {
+  font-size: 28px;
+  font-weight: bold;
+  color: #3e91ff;
+}
+
+.filter-con {
+  display: flex;
+  max-width: 1320px;
+  margin: 20px auto;
+}
+
+.combo-status {
+  border-radius: 8px;
+}
+
+.date {
+  margin-left: 100px;
+}
+
+.count {
+  font-size: 30px;
+  font-weight: bold;
+  color: #565656;
+  margin-top: 17px;
+  margin-left: 680px;
+}
+
+.container-xxl {
+  margin-top: 25px;
+  border: none;
+  border-radius: 8px;
+  justify-content: center;
+  background-color: #fff;
+  padding: 5px;
+}
+
+input[type="date"] {
+  font-size: 16px;
+  color: #333;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px;
+  width: 200px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: #333;
+}
+
+select {
+  font-size: 16px;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
+  width: 200px;
+}
+
+select option {
+  background-color: #fff;
+  color: #333;
+}
+
+select:hover {
+  border-color: #666;
+}
+
+th[scope="col"] {
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
+
+td a {
+  margin-left: 5px;
+}
+
+.Con-popup {
+  width: 1000px;
+  background: #fff;
+  border-radius: 15px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 30px 30px;
+  color: #000;
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+}
+
+.open-Con-popup {
+  visibility: visible;
+  top: 45%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+input[type="text"] {
+  font-size: 16px;
+  color: #333;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 6px;
+  width: 200px;
+}
+
+.deny-btn {
+  margin-top: 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff3e3e;
+  color: #fff;
+  font-size: 30px;
+  padding: 10px 30px;
+  margin-right: 20px;
+}
+
+.confirm-btn {
+  border: none;
+  border-radius: 10px;
+  background-color: #3e91ff;
+  color: #fff;
+  font-size: 30px;
+  padding: 10px 30px;
+}
+
+.textarea {
+  resize: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  margin-top: 20px;
+}
+
+.Rej-popup {
+  width: 700px;
+  background: #fff;
+  border-radius: 15px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 30px 30px;
+  color: #000;
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+}
+
+.open-Rej-popup {
+  visibility: visible;
+  top: 45%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.Doc-popup {
+  width: 1000px;
+  background: #fff;
+  border-radius: 15px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  text-align: center;
+  padding: 30px 30px;
+  color: #000;
+  visibility: hidden;
+  transition: transform 0.4s, top 0.4s;
+}
+
+.open-Doc-popup {
+  visibility: visible;
+  top: 45%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.row label {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: left;
+  color: #3e91ff;
+}
+
+.row label label {
+  color: #000;
+}
+
+.col label {
+  color: #3e91ff;
+}

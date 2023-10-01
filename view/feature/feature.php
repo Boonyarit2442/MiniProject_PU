@@ -3,20 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Position</title>
-    <link rel="stylesheet" href="./posstyle.css" />
+    <title>Feature</title>
+    <link rel="stylesheet" href="./feature.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </head>
-  <body class="">
+  <body>
     <?php 
     require_once('../../layout/_layout.php');
     require_once('../../controler/postitionController.php');
     ?>
-    
+
     <section class="feature">
       <div class="feature-con">
-        <div class="feature-text">ตำแหน่ง</div>
-        <button class="add-feature" type="submit" data-bs-toggle="modal" data-bs-target="#CreateModal">+ เพิ่มตำแหน่ง</button>
+        <div class="feature-text">จัดการคุณสมบัติแผนก : <label for="" style="color:#000">IT</label></div>
+        <button class="add-feature" type="submit" data-bs-toggle="modal" data-bs-target="#CreateModal">+ คุณสมบัติ</button>
       </div>
     </section>
     <!-- Create Position -->
@@ -24,21 +24,16 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="CreateModalLabel">เพิ่มตำแหน่ง</h5>
+                    <h5 class="modal-title" id="CreateModalLabel">เพิ่มคุณสมบัติ</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body w-100 h-100">
                     <form action="../../controler/postitionController.php" method="POST">
                         <div class="">
                             <div>
-                                <label for="dep-text">แผนกที่ต้องการสังกัด</label><label for="pos-text" style="margin-left:120px">ชื่อตำแหน่งที่ต้องการแก้ไข</label><br>
-                                <select name="NAME_PST" id="position">
-                                  <option value="IT" >IT</option>
-                                  <option value="Programmer" >Programer</option>
-                                  <option value="HR" >HR</option>
-                                  <option value="Manager" >Manager</option>
-                                </select>
-                                <input type="text" name="ID_PST" id="ID_PST" value="<?=$Data[$i]['ID_PST']?>" style="margin-left:5px"><br>
+                                <label for="dep-text" style="margin-left:10px">ชื่อคุณสมบัติ</label><label for="pos-text" style="margin-left:160px">รายละเอียดคุณสมบัติ</label><br>
+                                <input type="text" name="ID_PST" id="ID_PST" value="<?=$Data[$i]['ID_PST']?>" style="margin-left:10px">
+                                <input type="text" name="JOB_DETEL" id="JOB_DETEL" value="<?=$Data[$i]['JOB_DETEL']?>" style="margin-left:35px">
                             </div>
                             <button class="cancel-btn" type="submit" style="background-color:red;color:#fff;border:none;border-radius:3px;font-size:16px;padding:10px 30px;margin-top:20px;margin-left:110px">ยกเลิก</button>
                             <button class="submit-btn" type="submit" style="background-color:#3e91ff;color:#fff;border:none;border-radius:3px;font-size:16px;padding:10px 30px;margin-top:20px;margin-left:30px">ยืนยัน</button>
@@ -62,17 +57,6 @@
             placeholder="ค้นหาคุณสมบัติ..."
             size="60"
           />
-          <div class="dep-con">
-          <label for="dep-text">แผนก</label>         
-          <div class="combo-dep">
-            <select name="department" id="department">
-              <option value="It">IT</option>
-              <option value="Programmer">Programer</option>
-              <option value="Hr">HR</option>
-              <option value="Manager">Manager</option>
-            </select>
-          </div>
-          </div>
 
           <div class="pos-con">
           <label for="pos-text">ตำแหน่ง</label>
@@ -95,9 +79,8 @@
         <thead>
           <tr>
             <th scope="col"><input type="checkbox" /></th>
-            <th scope="col">รหัส</th>
-            <th scope="col">ชื่อตำแหน่ง</th>
-            <th scope="col">แผนก</th>
+            <th scope="col">ชื่อคุณสมบัติ</th>
+            <th scope="col">รายละเอียด</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -106,7 +89,6 @@
           <tr>
             <th scope="row"><input type="checkbox" /></th>
             <td><?=$Data[$i]['ID_PST']?></td>
-            <td><?=$Data[$i]['NAME_PST']?></td>
             <td><?=$Data[$i]['JOB_DETEL']?></td>
             <td>
               <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#<?="EditModel_".$i?>" id="edit_<?=$i?>"><img
@@ -125,16 +107,10 @@
                     <div class="modal-body w-100 h-100">
                       <form action="../../controler/postitionController.php" method="POST">
                         <div>
-                        <!--from Edit data -->
-                          <div>
-                                <label for="dep-text">แผนกที่ต้องการสังกัด</label><label for="pos-text" style="margin-left:120px">ชื่อตำแหน่งที่ต้องการแก้ไข</label><br>
-                                <select name="NAME_PST" id="position">
-                                  <option value="IT" >IT</option>
-                                  <option value="Programmer" >Programer</option>
-                                  <option value="HR" >HR</option>
-                                  <option value="Manager" >Manager</option>
-                                </select>
-                                <input type="text" name="ID_PST" id="ID_PST" value="<?=$Data[$i]['ID_PST']?>" style="margin-left:5px"><br>
+                            <div>
+                                <label for="dep-text" style="margin-left:10px">ชื่อคุณสมบัติ</label><label for="pos-text" style="margin-left:160px">รายละเอียดคุณสมบัติ</label><br>
+                                <input type="text" name="ID_PST" id="ID_PST" value="<?=$Data[$i]['ID_PST']?>" style="margin-left:10px">
+                                <input type="text" name="JOB_DETEL" id="JOB_DETEL" value="<?=$Data[$i]['JOB_DETEL']?>" style="margin-left:35px">
                             </div>
                             <button class="cancel-btn" type="submit" style="background-color:red;color:#fff;border:none;border-radius:3px;font-size:16px;padding:10px 30px;margin-top:20px;margin-left:110px">ยกเลิก</button>
                             <button class="submit-btn" type="submit" style="background-color:#3e91ff;color:#fff;border:none;border-radius:3px;font-size:16px;padding:10px 30px;margin-top:20px;margin-left:30px">ยืนยัน</button>

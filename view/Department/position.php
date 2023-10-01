@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Position</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./posstyle.css" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   </head>
   <body class="">
     <?php 
@@ -30,19 +31,27 @@
                 <div class="modal-body w-100 h-100">
                     <form action="../../controler/postitionController.php" method="POST">
                         <div class="">
+                            <!--from create data -->
                             <div>
-                                <label for="dep-text">แผนกที่ต้องการสังกัด</label><label for="pos-text" style="margin-left:120px">ชื่อตำแหน่งที่ต้องการแก้ไข</label><br>
+                                <label for="ID_PST">รหัส</label><br>
+                                <input type="text" name="ID_PST" id="ID_PST"><br>
+                            </div>
+                            <div>
+                                <label for="pos-text">ตำแหน่ง</label><br>
                                 <select name="NAME_PST" id="position">
                                   <option value="IT" >IT</option>
                                   <option value="Programmer" >Programer</option>
                                   <option value="HR" >HR</option>
                                   <option value="Manager" >Manager</option>
                                 </select>
-                                <input type="text" name="ID_PST" id="ID_PST" value="<?=$Data[$i]['ID_PST']?>" style="margin-left:5px"><br>
                             </div>
-                            <button class="cancel-btn" type="submit" style="background-color:red;color:#fff;border:none;border-radius:3px;font-size:16px;padding:10px 30px;margin-top:20px;margin-left:110px">ยกเลิก</button>
-                            <button class="submit-btn" type="submit" style="background-color:#3e91ff;color:#fff;border:none;border-radius:3px;font-size:16px;padding:10px 30px;margin-top:20px;margin-left:30px">ยืนยัน</button>
-                        </div>
+                            <div>
+                                <label for="JOB_DETEL">รายละเอียด</label><br>
+                                <input type="text" name="JOB_DETEL" id="JOB_DETEL"><br>
+                            </div>
+                            <div>
+                                <input type="submit" value="ADD" name="_method" style="margin-top:5px">
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -52,8 +61,6 @@
     <!--------------------------------------------------------------->
     <section class="filter">
       <nav class="filter-bar">
-
-      
         <div class="filter-con">
           <input
             class="search-bar"
@@ -62,21 +69,10 @@
             placeholder="ค้นหาคุณสมบัติ..."
             size="60"
           />
-          <div class="dep-con">
-          <label for="dep-text">แผนก</label>         
-          <div class="combo-dep">
-            <select name="department" id="department">
-              <option value="It">IT</option>
-              <option value="Programmer">Programer</option>
-              <option value="Hr">HR</option>
-              <option value="Manager">Manager</option>
-            </select>
-          </div>
-          </div>
+          <button class="search-bth" type="submit">SEARCH</button>
 
-          <div class="pos-con">
-          <label for="pos-text">ตำแหน่ง</label>
-          <div class="combo-pos">
+          <div class="combo">
+            <label for="pos-text">ตำแหน่ง</label>
             <select name="position" id="position">
               <option value="It">IT</option>
               <option value="Programmer">Programer</option>
@@ -84,12 +80,9 @@
               <option value="Manager">Manager</option>
             </select>
           </div>
-          </div>
-          <button class="search-bth" type="submit">SEARCH</button>
         </div>
       </nav>
     </section>
-    <!--------------------------------------------------------------->
     <div class="container-xxl">
       <table class="table table-striped table-hover">
         <thead>
@@ -97,7 +90,7 @@
             <th scope="col"><input type="checkbox" /></th>
             <th scope="col">รหัส</th>
             <th scope="col">ชื่อตำแหน่ง</th>
-            <th scope="col">แผนก</th>
+            <th scope="col">รายละเอียด</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -126,18 +119,26 @@
                       <form action="../../controler/postitionController.php" method="POST">
                         <div>
                         <!--from Edit data -->
-                          <div>
-                                <label for="dep-text">แผนกที่ต้องการสังกัด</label><label for="pos-text" style="margin-left:120px">ชื่อตำแหน่งที่ต้องการแก้ไข</label><br>
-                                <select name="NAME_PST" id="position">
+                        <div>
+                                <label for="ID_PST">รหัส</label><br>
+                                <input type="text" name="ID_PST" id="ID_PST" value="<?=$Data[$i]['ID_PST']?>"><br>
+                            </div>
+                            <div>
+                                <label for="pos-text">ตำแหน่ง</label><br>
+                                <select name="NAME_PST" id="position" >
                                   <option value="IT" >IT</option>
                                   <option value="Programmer" >Programer</option>
                                   <option value="HR" >HR</option>
                                   <option value="Manager" >Manager</option>
                                 </select>
-                                <input type="text" name="ID_PST" id="ID_PST" value="<?=$Data[$i]['ID_PST']?>" style="margin-left:5px"><br>
                             </div>
-                            <button class="cancel-btn" type="submit" style="background-color:red;color:#fff;border:none;border-radius:3px;font-size:16px;padding:10px 30px;margin-top:20px;margin-left:110px">ยกเลิก</button>
-                            <button class="submit-btn" type="submit" style="background-color:#3e91ff;color:#fff;border:none;border-radius:3px;font-size:16px;padding:10px 30px;margin-top:20px;margin-left:30px">ยืนยัน</button>
+                            <div>
+                                <label for="JOB_DETEL">รายละเอียด</label><br>
+                                <input type="text" name="JOB_DETEL" id="JOB_DETEL" value="<?=$Data[$i]['JOB_DETEL']?>"><br>
+                            </div>
+                          <div>
+                            <input type="submit" value="EDIT" name = "_method" style="margin-top:5px">
+                          </div>
                         </div>
                       </form>
                     </div>
@@ -161,31 +162,5 @@
         </tbody>
       </table>
     </div>
-    <!-- sweetalert2 -->
-    <button id="showModalSubmitButton" style="background-color:#3e91ff;color:#fff;border:none;border-radius:3px;font-size:16px;padding:10px 30px;margin-top:20px;margin-left:30px">ใส่ตรงยืนยันในเพิ่มและแก้ไข</button>
-    <!--  -->
-    </body>
+  </body>
 </html>
-
-<script>
-  // Select the button element by its id
-  const showModalSubmitButton = document.getElementById('showModalSubmitButton');
-
-  // Attach a click event listener to the button
-  showModalSubmitButton.addEventListener('click', () => {
-    Swal.fire({
-      title: 'Do you want to save the changes?',
-      icon: 'warning',
-      showDenyButton: true,
-      confirmButtonText: 'Save',
-      denyButtonText: `Don't save`,
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        Swal.fire('Saved!', '', 'success');
-      } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info');
-      }
-    });
-  });
-</script>
