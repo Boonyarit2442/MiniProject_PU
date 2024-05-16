@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset(
         $_SESSION["username"] = $username;
         $_SESSION['start'] = time();
         $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
-        header("Location: ../List_of_requests/List.php"); 
+        header("Location: ../blank.php");
         exit;
     } else {
 

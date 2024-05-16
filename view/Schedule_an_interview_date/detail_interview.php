@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Link CSS -->
     <link rel="stylesheet" href="style_detail_interview.css">

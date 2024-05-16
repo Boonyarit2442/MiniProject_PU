@@ -290,15 +290,6 @@
         }
 
     </script>
-    <script>
-        function populateEditModal(idDep, nameDep, empLead) {
-            $('#edit_ID_DEP').val(idDep);
-            $('#edit_NAME_DEP').val(nameDep);
-            $('#edit_EMP_LEAD').val(empLead);
-        }
-    </script>
-
-
 
 </body>
 
