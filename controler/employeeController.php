@@ -357,14 +357,11 @@ function update($conn,$data){
     $ADDRESS = $data['ADDRESS'];
     $TEL = $data['TEL'];
     $ID_POS = $data['ID_POS'];
-    $LEAD = $data['LEAD'];
-    $USER = $data['USER'];
-    $PASSWORD = $data['PASSWORD'];
 try {
     $stmt = $conn->prepare("UPDATE EMPLOYEE 
     SET  ID_EMP = ? , NAME = ? , L_NAME = ?  , SEX = ? , EMAIL = ? , 
-    B_DAY = TO_DATE(?, 'MM-DD-YYYY') , NATIONALITY = ? , STARTDATE = TO_DATE(?, 'MM-DD-YYYY') , DEPNO = ? , 
-    PSTNO = ? , SAL = ? , ADDRESS = ? , TEL = ? , ID_POS = ? ,ID_LEAD = ? ,USER_ID = ? ,PASSWORD = ?
+    B_DAY = TO_DATE(?, 'MM-DD-YYYY') , NATIONALITY = ? , STARTDATE = TO_DATE(?, 'MM-DD-YYYY') ,ENDDATE = TO_DATE(?, 'MM-DD-YYYY'), DEPNO = ? , 
+    PSTNO = ? , SAL = ? , ADDRESS = ? , TEL = ? , ID_POS = ?
     WHERE ID_EMP = ?");
     $stmt->bindParam(1, $ID, PDO::PARAM_STR);
     $stmt->bindParam(2, $NAME, PDO::PARAM_STR);
@@ -374,16 +371,14 @@ try {
     $stmt->bindParam(6, $B_DAY, PDO::PARAM_STR); 
     $stmt->bindParam(7, $NATIONALITY, PDO::PARAM_STR);
     $stmt->bindParam(8, $STARTDATE, PDO::PARAM_STR);
-    $stmt->bindParam(9, $DEPNO, PDO::PARAM_STR); 
-    $stmt->bindParam(10, $PSTNO, PDO::PARAM_STR);
-    $stmt->bindParam(11, $SAL, PDO::PARAM_STR); 
-    $stmt->bindParam(12, $ADDRESS, PDO::PARAM_STR);
-    $stmt->bindParam(13, $TEL, PDO::PARAM_STR);   
-    $stmt->bindParam(14, $ID_POS, PDO::PARAM_STR);
-    $stmt->bindParam(15, $LEAD, PDO::PARAM_STR);   
-    $stmt->bindParam(16, $USER, PDO::PARAM_STR);
-    $stmt->bindParam(17, $PASSWORD, PDO::PARAM_STR);
-    $stmt->bindParam(18, $ID, PDO::PARAM_STR);
+    $stmt->bindParam(9, $ENDDATE, PDO::PARAM_STR);
+    $stmt->bindParam(10, $DEPNO, PDO::PARAM_STR); 
+    $stmt->bindParam(11, $PSTNO, PDO::PARAM_STR);
+    $stmt->bindParam(12, $SAL, PDO::PARAM_STR); 
+    $stmt->bindParam(13, $ADDRESS, PDO::PARAM_STR);
+    $stmt->bindParam(14, $TEL, PDO::PARAM_STR);   
+    $stmt->bindParam(15, $ID_POS, PDO::PARAM_STR);
+    $stmt->bindParam(16, $ID, PDO::PARAM_STR);
     $stmt->execute();
     echo "<script>window.location = 'http://203.188.54.9/~u6411800010/view/Employee/employee_page.php'</script>";
 

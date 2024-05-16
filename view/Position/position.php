@@ -68,7 +68,6 @@
             <input type="submit" value="ADD" name="_method" style="margin-top:5px">
           </form>
         </div>
-      </div>
     </div>
   </div>
   <section class="filter">
@@ -455,4 +454,25 @@
 
 </body>
 
-</html>
+<script>
+  // Select the button element by its id
+  const showModalSubmitButton = document.getElementById('showModalSubmitButton');
+
+  // Attach a click event listener to the button
+  showModalSubmitButton.addEventListener('click', () => {
+    Swal.fire({
+      title: 'Do you want to save the changes?',
+      icon: 'warning',
+      showDenyButton: true,
+      confirmButtonText: 'Save',
+      denyButtonText: `Don't save`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire('Saved!', '', 'success');
+      } else if (result.isDenied) {
+        Swal.fire('Changes are not saved', '', 'info');
+      }
+    });
+  });
+</script>

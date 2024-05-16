@@ -412,6 +412,48 @@
                   } 
             });
         }
+
+        function deleteEmployee(employeeId) {
+        // Send an AJAX request to your PHP script to delete the employee
+        $.ajax({
+            type: 'POST',
+            url: '../../controler/employeeController.php', // Replace with the actual URL of your delete script
+            data: { _method: 'DELETE', KYE: employeeId },
+            success: function (response) {
+                // Handle success response if needed
+                // You can also reload the page to update the employee list
+                window.location.reload();
+            },
+            error: function (xhr, status, error) {
+                // Handle error response if needed
+                console.error(xhr.responseText);
+            }
+        });
+    }
+
+    function editAlert(){      
+            const swalWithBootstrapButtons = Swal.mixin({
+              customClass: {
+                confirmButton: 'btn btn-success ms-3',
+                cancelButton: 'btn btn-danger '
+              },
+              buttonsStyling: false
+            })
+
+            swalWithBootstrapButtons.fire({
+              title: 'ต้องการแก้ไขใช่หรือไม่?',
+              text: "หากต้องการแก้ไข กดยืนยันได้เลยนะจ๊ะ",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonText: 'ยืนยัน',
+              cancelButtonText: 'ยกเลิก',
+              reverseButtons: true
+            }).then((result) => {
+              if (result.isConfirmed) {
+                
+              } 
+        });
+    }
     </script>
 
 </body>
