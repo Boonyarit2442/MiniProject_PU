@@ -2,8 +2,8 @@
 
 include 'ConnectDB.php';
 session_start();
-if(isset($_SESSION['username']) || isset($_SESSION['id']))
-    header('location: ../../index.php');
+if (isset($_SESSION['username']) || isset($_SESSION['id']))
+    header('location: ../../view/blank.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
@@ -15,16 +15,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset(
     $stmt->bindParam(':2', $password, PDO::PARAM_STR);
     $stmt->execute();
     $result = $stmt->fetch();
-    
+
     if ($result) {
-        $_SESSION['id'] = $result['NAME_ID'];
+        $_SESSION['id'] = $result['NAME'];
+        $_SESSION['ID_EMP'] = $result['ID_EMP'];
+        $_SESSION['DEP'] = $result['DEPNO'];
+        $_SESSION['PST'] = $result['PSTNO'];
         $_SESSION["username"] = $username;
         $_SESSION['start'] = time();
         $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
-        header("Location: ../REQ/MREQ.php"); 
+        header("Location: ../blank.php");
         exit;
     } else {
-        
+
     }
 }
 ?>

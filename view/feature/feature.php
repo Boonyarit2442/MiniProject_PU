@@ -1,167 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Feature</title>
-    <link rel="stylesheet" href="./feature.css" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  </head>
-  <body>
-    <?php 
-    require_once('../../layout/_layout.php');
-    require_once('../../controler/postitionController.php');
-    ?>
 
-    <section class="feature">
-      <div class="feature-con">
-        <div class="feature-text">จัดการคุณสมบัติแผนก : <label for="" style="color:#000">IT</label></div>
-        <button class="add-feature" type="submit" data-bs-toggle="modal" data-bs-target="#CreateModal">+ คุณสมบัติ</button>
-      </div>
-    </section>
-    <!-- Create Position -->
-    <div class="modal fade" id="CreateModal" tabindex="-1" aria-labelledby="CreateModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="CreateModalLabel">เพิ่มคุณสมบัติ</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body w-100 h-100">
-                    <form action="../../controler/postitionController.php" method="POST">
-                        <div class="">
-                            <div>
-                                <label for="dep-text" style="margin-left:10px">ชื่อคุณสมบัติ</label><label for="pos-text" style="margin-left:160px">รายละเอียดคุณสมบัติ</label><br>
-                                <input type="text" name="ID_PST" id="ID_PST" value="<?=$Data[$i]['ID_PST']?>" style="margin-left:10px">
-                                <input type="text" name="JOB_DETEL" id="JOB_DETEL" value="<?=$Data[$i]['JOB_DETEL']?>" style="margin-left:35px">
-                            </div>
-                            <button class="cancel-btn" type="submit" style="background-color:red;color:#fff;border:none;border-radius:3px;font-size:16px;padding:10px 30px;margin-top:20px;margin-left:110px">ยกเลิก</button>
-                            <button class="submit-btn" type="submit" style="background-color:#3e91ff;color:#fff;border:none;border-radius:3px;font-size:16px;padding:10px 30px;margin-top:20px;margin-left:30px">ยืนยัน</button>
-                        </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feature</title>
+  <link rel="stylesheet" href="./feature.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body style="background-color: rgb(234,234,234);">
+  <?php
+  require_once('../../layout/_layout.php');
+  require_once('../../controler/Feature.php');
+
+  ?>
+
+  <section class="feature">
+    <div class="feature-con">
+      <div class="feature-text">จัดการคุณสมบัติแผนก : <label for="" style="color:#000">
+          <?= $Namedep ?>
+        </label></div>
+      <button class="add-feature" type="submit" data-bs-toggle="modal" data-bs-target="#CreateModal">+
+        คุณสมบัติ</button>
     </div>
-    <!--------------------------------------------------------------->
-    <section class="filter">
-      <nav class="filter-bar">
-
-      
-        <div class="filter-con">
-          <input
-            class="search-bar"
-            type="text"
-            id="search"
-            placeholder="ค้นหาคุณสมบัติ..."
-            size="60"
-          />
-
-          <div class="pos-con">
-          <label for="pos-text">ตำแหน่ง</label>
-          <div class="combo-pos">
-            <select name="position" id="position">
-              <option value="It">IT</option>
-              <option value="Programmer">Programer</option>
-              <option value="Hr">HR</option>
-              <option value="Manager">Manager</option>
-            </select>
-          </div>
-          </div>
-          <button class="search-bth" type="submit">SEARCH</button>
+  </section>
+  <!-- Create Position -->
+  <div class="modal fade" id="CreateModal" tabindex="-1" aria-labelledby="CreateModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="CreateModalLabel">เพิ่มตำแหน่ง</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-      </nav>
-    </section>
-    <!--------------------------------------------------------------->
-    <div class="container-xxl">
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th scope="col"><input type="checkbox" /></th>
-            <th scope="col">ชื่อคุณสมบัติ</th>
-            <th scope="col">รายละเอียด</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php for ($i=0; $i <count($Data); $i++) { ?>
-          <tr>
-            <th scope="row"><input type="checkbox" /></th>
-            <td><?=$Data[$i]['ID_PST']?></td>
-            <td><?=$Data[$i]['JOB_DETEL']?></td>
-            <td>
-              <a data-toggle="modal" data-bs-toggle="modal" data-bs-target="#<?="EditModel_".$i?>" id="edit_<?=$i?>"><img
-                src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png"
-                width="22"
-                height="22">
-              </a>
-              <!-- edit Position -->
-              <div class="modal fade" id="<?="EditModel_".$i?>" tabindex="-1" aria-labelledby="EditModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="<?="EditModel_".$i?>Label">แก้ไขตำแหน่ง</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body w-100 h-100">
-                      <form action="../../controler/postitionController.php" method="POST">
-                        <div>
-                            <div>
-                                <label for="dep-text" style="margin-left:10px">ชื่อคุณสมบัติ</label><label for="pos-text" style="margin-left:160px">รายละเอียดคุณสมบัติ</label><br>
-                                <input type="text" name="ID_PST" id="ID_PST" value="<?=$Data[$i]['ID_PST']?>" style="margin-left:10px">
-                                <input type="text" name="JOB_DETEL" id="JOB_DETEL" value="<?=$Data[$i]['JOB_DETEL']?>" style="margin-left:35px">
-                            </div>
-                            <button class="cancel-btn" type="submit" style="background-color:red;color:#fff;border:none;border-radius:3px;font-size:16px;padding:10px 30px;margin-top:20px;margin-left:110px">ยกเลิก</button>
-                            <button class="submit-btn" type="submit" style="background-color:#3e91ff;color:#fff;border:none;border-radius:3px;font-size:16px;padding:10px 30px;margin-top:20px;margin-left:30px">ยืนยัน</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div> 
-              <!-------------------------------------->
+        <div class="modal-body w-100 h-100">
+          <form action="../../controler/Feature.php" method="POST">
+            <div class="">
               <div>
-              <form action="../../controler/postitionController.php" method="POST">
-                <a href="../../controler/postitionController.php" name="_method" value="DELETE"><img
-                  src="https://cdn-icons-png.flaticon.com/128/2496/2496733.png"
-                  width="22"
-                  height="22">
-                </a>
-                <input type="hidden" name="KYE" id="KYE" value="<?=$Data[$i]['ID_PST']?>">
-              </form>
+                <div>
+                  <label for="dep-text" style="margin-top: 5px;">ตำแหน่งที่ต้องการเพิ่ม</label><br>
+                  <select name="NAME_PST" id="NAME_PST"
+                    style="width:250px;height:40px;text-align: center; margin-right: 100px;">
+                    <option value="all">ทั้งหมด</option>
+                    <?php foreach ($SelectPst as $result) { ?>
+                      <option value="<?php echo $result['NAME_PST']; ?>">
+                        <?php echo $result['NAME_PST']; ?>
+                      </option>
+                    <?php } ?>
+                  </select>
+                </div><br>
+                <div>
+                  <select name="NAME_FEAT" id="NAME_FEAT"
+                    style="width:250px;height:40px;text-align: center; margin-right: 100px;">
+                    <option value="all">ทั้งหมด</option>
+                    <?php foreach ($SelectFeat as $result) { ?>
+                      <option value="<?php echo $result['NAME_FEAT']; ?>">
+                        <?php echo $result['NAME_FEAT']; ?>
+                      </option>
+                    <?php } ?>
+                  </select>
+                </div><br>
+                <div> <textarea id="DETEL" name="DETEL" rows="6" cols="50" style="margin: top 5px"></textarea></div><br>
               </div>
-            </td>
-          </tr>
-          <?php } ?>
-        </tbody>
-      </table>
+            </div>
+            <input type="submit" value="ADD" name="_method" style="margin-top:5px">
+          </form>
+        </div>
+      </div>
     </div>
-    <!-- sweetalert2 -->
-    <button id="showModalSubmitButton" style="background-color:#3e91ff;color:#fff;border:none;border-radius:3px;font-size:16px;padding:10px 30px;margin-top:20px;margin-left:30px">ใส่ตรงยืนยันในเพิ่มและแก้ไข</button>
-    <!--  -->
-    </body>
-</html>
+  </div>
+  <script>
+    // Get the message from the URL query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get('message');
 
-<script>
-  // Select the button element by its id
-  const showModalSubmitButton = document.getElementById('showModalSubmitButton');
-
-  // Attach a click event listener to the button
-  showModalSubmitButton.addEventListener('click', () => {
-    Swal.fire({
-      title: 'Do you want to save the changes?',
-      icon: 'warning',
-      showDenyButton: true,
-      confirmButtonText: 'Save',
-      denyButtonText: `Don't save`,
-    }).then((result) => {
-      /* Read more about isConfirmed, isDenied below */
-      if (result.isConfirmed) {
-        Swal.fire('Saved!', '', 'success');
-      } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info');
-      }
-    });
-  });
+    // Display the message using SweetAlert2 (Swal)
+    if (message) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: decodeURIComponent(message), // Decode the URL-encoded message
+        });
+    }
 </script>
+  <!--------------------------------------------------------------->
+  <section class="filter">
+    <nav class="filter-bar">
+      <div class="filter-con">
+        <form action="#" method="POST" id="formsearch">
+          <input type="search" name="searchName" id="searchName">
+          <input type="submit" name="_method" value="search">
+        </form>
+    </nav>
+  </section>
+  <!--------------------------------------------------------------->
+  <div class="container-xxl">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">ชื่อตำแหน่ง</th>
+          <th scope="col">ชื่อคุณสมบัติ</th>
+          <th scope="col">รายละเอียดคุณสมบัติ</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody id="showdata">
+        <?php for ($i = 0; $i < count($Table); $i++) { ?>
+        <tr>
+          <td>
+            <?= $Table[$i]['NAME_PST'] ?>
+          </td>
+          <td>
+            <?= $Table[$i]['NAME_FEAT'] ?>
+          </td>
+          <td>
+            <?= $Table[$i]['DETEL'] ?>
+          </td>
+          <td>
+            <button onclick="editAlert('<?= $Table[$i]['ORDER_FP'] ?>','<?= $Table[$i]['NAME_PST'] ?>')"
+              style="border : 0; padding: 0;">
+              <img src="https://cdn-icons-png.flaticon.com/128/1828/1828270.png" width="22" height="22">
+            </button>
+            <button onclick="deleteAlert('<?= $Table[$i]['ORDER_FP'] ?>')" style="border : 0; padding: 0;"><img
+                src="https://cdn-icons-png.flaticon.com/128/2496/2496733.png" width="22" height="22"></button>
+          </td>
+        </tr>
+        <?php } ?>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    function editAlert(Order, PstId) {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success ms-3',
+          cancelButton: 'btn btn-danger '
+        },
+        buttonsStyling: false
+      })
+
+      swalWithBootstrapButtons.fire({
+        title: 'ต้องการแก้ไขใช่หรือไม่?',
+        text: "หากต้องการแก้ไข กดยืนยันได้เลยนะจ๊ะ",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'ยืนยัน',
+        cancelButtonText: 'ยกเลิก',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const editUrl = `Edit_feature.php?pstid=${PstId}&order=${Order}`;// เพิ่มพารามิเตอร์เพิ่มเติมตามต้องการ window.location.href = editUrl;
+          window.location.href = editUrl;
+        }
+      });
+    }
+
+    function deleteAlert(Order) {
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success ms-3',
+          cancelButton: 'btn btn-danger '
+        },
+        buttonsStyling: false
+      })
+
+      swalWithBootstrapButtons.fire({
+        title: 'แน่ใจหรือไหม?',
+        text: "หากคุณกดยืนยันจะไม่สามารถย้อนกลับมาแก้ไขได้อีก!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'ยืนยัน',
+        cancelButtonText: 'ยกเลิก',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          deleteList(Order);
+        }
+      });
+    }
+
+
+    function deleteList(Order) {
+      const formData = new FormData();
+      formData.append('_method', 'DELETE');
+      formData.append('ORDER', Order);
+      fetch('../../controler/Feature.php', {
+        method: 'POST',
+        body: formData,
+      }).then(response => {
+        window.location.reload();
+      })
+    }
+
+  </script>
+
+
+</body>
+
+</html>

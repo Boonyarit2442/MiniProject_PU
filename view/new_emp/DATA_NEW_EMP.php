@@ -1,46 +1,45 @@
 <?php
 require_once('../../controler/ConnectDB.php');
 
-if ($_SERVER['REQUEST_METHOD'] == "GET") {
-    $data = $conn->query('SELECT * FROM NEW_EMP')->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($data);
-} elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // รับข้อมูลที่ส่งมาจากแอพพลิเคชัน เช่น JSON
-    $requestData = json_decode(file_get_contents("pannic.php"), true);
+if(isset($_POST['submit'])){
+    
+    $id = $_POST['id'] ?? rand(1, 100);
+    $day = $_POST['day'] ?? "12-10-2023";
+    $PATHDOC = $_POST['PATHDOC'] ?? "wqqe";
+    $name = $_POST['name'];
+    $Lname = $_POST['Lname'];
+    $sex = $_POST['sex'];
+   
+    $NOTIONALITY = $_POST['NOTIONALITY']; 
+    $ADDRESS = $_POST['ARDESS']; 
+    $EMAIL = $_POST['EMPIL']; 
+    $ID_POS = $_POST['ID_POS'];
+    $RELIGION = $_POST['RELIGION'];
+    $bday = date("d-m-Y", strtotime($_POST['B_DAY']));
+    
+    $insert_stmt = $conn->prepare("INSERT INTO NEW_EMP(ID_NEMP, NAME_NEMP, LNAME_NEMP, DAY_NEMP, SEX_NEMP, BDAY_NEMP, NOTIONALITY_NEMP, ADDRESS, EMAIL, ID_POS, PATHDOC_NEMP, RELIGION_NEMP) VALUES(:id, :name, :Lname, TO_DATE(:day, 'DD-MM-YYYY'), :sex, TO_DATE(:bday, 'DD-MM-YYYY'), :NOTIONALITY, :ADDRESS, :EMAIL, :ID_POS, :PATHDOC, :RELIGION)");
+    
 
-    // ตรวจสอบว่าเป็นการเพิ่มหรือลบข้อมูล
-    if (isset($requestData['action']) && $requestData['action'] == 'add') {
-        // ดึงข้อมูลที่ต้องการเพิ่มจาก $requestData และเพิ่มลงในฐานข้อมูล
-        $name = $requestData['name'];
-        $email = $requestData['email'];
-        // เพิ่มข้อมูลลงในฐานข้อมูล
-        $sql = "INSERT INTO NEW_EMP (NAME_NEMP, EMAIL) VALUES (:name, :email)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':email', $email);
 
-        if ($stmt->execute()) {
-            echo 'เพิ่มข้อมูลเรียบร้อยแล้ว';
-        } else {
-            echo 'เกิดข้อผิดพลาดในการเพิ่มข้อมูล';
-        }
-    } elseif (isset($requestData['action']) && $requestData['action'] == 'delete') {
-        // รับ ID ที่ต้องการลบ
-        $id = $requestData['id'];
-        // ลบข้อมูลจากฐานข้อมูล
-        $sql = "DELETE FROM NEW_EMP WHERE Id = :id";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':id', $id);
-
-        if ($stmt->execute()) {
-            echo 'ลบข้อมูลเรียบร้อยแล้ว';
-        } else {
-            echo 'เกิดข้อผิดพลาดในการลบข้อมูล';
-        }
+ 
+    $insert_stmt->bindParam(':id', $id);
+    $insert_stmt->bindParam(':name', $name);
+    $insert_stmt->bindParam(':Lname', $Lname);
+    $insert_stmt->bindParam(':day', $day);
+    $insert_stmt->bindParam(':sex', $sex);
+    $insert_stmt->bindParam(':bday', $bday);
+    $insert_stmt->bindParam(':NOTIONALITY', $NOTIONALITY);
+    $insert_stmt->bindParam(':ADDRESS', $ADDRESS);
+    $insert_stmt->bindParam(':EMAIL', $EMAIL);
+    $insert_stmt->bindParam(':ID_POS', $ID_POS);
+    $insert_stmt->bindParam(':PATHDOC', $PATHDOC);
+    $insert_stmt->bindParam(':RELIGION', $RELIGION);
+    
+    if ($insert_stmt->execute()) {
+        $insertMsg = "INsert Success";
     } else {
-        echo 'ไม่ระบุการกระทำ (action)';
+        $insertMsg = "INsert Failed";
     }
-} else {
-    http_response_code(405);
-}
+ }
+ 
 ?>

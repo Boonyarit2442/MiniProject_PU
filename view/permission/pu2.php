@@ -3,262 +3,147 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link rel="stylesheet" href="pu2.css">
 
-  
 </head>
 
 <body style="height: 60px;">
-  <!-- navigater Bar -->
-
-<?php require_once('../../layout/_layout.php')?>
-
-
-
-
-
-  <style>
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    th {
-      text-align: center;
-      background-color: #ffc107;
-      color: #000000;
-    }
-
-    td,
-    th {
-      border: 1px solid #868583;
-      padding: 12px;
-    }
-
-    tr:nth-child(even) {
-      background-color: #ececec;
-    }
-  </style>
-  <style>
-    #menu__toggle {
-      opacity: 0;
-    }
-
-    #menu__toggle:checked+.menu__btn>span {
-      transform: rotate(45deg);
-    }
-
-    #menu__toggle:checked+.menu__btn>span::before {
-      top: 0;
-      transform: rotate(0deg);
-    }
-
-    #menu__toggle:checked+.menu__btn>span::after {
-      top: 0;
-      transform: rotate(90deg);
-    }
-
-    #menu__toggle:checked~.menu__box {
-      left: 0 !important;
-    }
-
-    .menu__btn {
-      position: relative;
-      top: 15px;
-      left: 20px;
-      width: 26px;
-      height: 26px;
-      cursor: pointer;
-      z-index: 1;
-    }
-
-    .menu__btn>span,
-    .menu__btn>span::before,
-    .menu__btn>span::after {
-      display: block;
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      background-color: #fff;
-      transition-duration: .25s;
-    }
-
-    .menu__btn>span::before {
-      content: '';
-      top: -8px;
-    }
-
-    .menu__btn>span::after {
-      content: '';
-      top: 8px;
-    }
-
-    .menu__box {
-      display: block;
-      position: fixed;
-      top: 0;
-      left: -100%;
-      width: 300px;
-      height: 100%;
-      margin: 0;
-      padding: 80px 0;
-      list-style: none;
-      background-color: #3E91FF;
-      /*box-shadow: 2px 2px 6px rgba(0, 0, 0, .4);*/
-      transition-duration: .25s;
-    }
-
-    .menu__item {
-      display: block;
-      padding: 12px 24px;
-      color: #fff;
-      font-family: 'Roboto', sans-serif;
-      font-size: 20px;
-      font-weight: 600;
-      text-decoration: none;
-      transition-duration: .25s;
-    }
-
-    .menu__item:hover {
-      color: #fff;
-      background-color: #043AA3;
-    }
-
-    .nav-item>div {
-      margin-left: 10px;
-      border-radius: 0.4rem;
-    }
-
-    .nav-item>a {
-      margin-left: 10px;
-    }
-  </style>
-
-
-
-
+  <?php require_once('../../layout/_layout.php') ?>
+  <?php require_once('../../controler/Permission.php') ?>
+  <nav class="navbar navbar-expand-sm  "></nav>
 
   <div class="container">
-    <span style="font-size:30px"><span style="color:blue">การจัดการสิทธ์การเข้าถึง</span></span>&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;<span style="font-size:30px"><span style="color:blue">นาย พรภูเบศ
-        น้ำดอกไม้</span></span><br><br><br>
+
+    <h1 style="font-size:30px">
+      <p style="color:blue">ตั้งชื่อสิทธิ์การใช้งาน</p>
+    </h1>
+    <form action="#" method="POST" id="permissionForm">
+      <div class="container w-50" style="margin-left: 310px;">
+
+        <div class="">
+          <div>
+            <label for="ID_PST">ชื่อสิทธิ</label><br>
+            <input type="text" name="NAME_PERM" id="NAME_PERM"><br>
+          </div>
+        </div>
+      </div>
 
   </div>
-  <main>
-    <div class="container">
-
-      <h1 style="font-size:30px">
-        <p style="color:blue">ตั้งชื่อสิทธิ์การใช้งาน</p>
-      </h1>
-      <header class="py-3 mb-3 border-bottom">
-
-
-        <div class="d-flex align-items-center">
-          <form class="w-100 me-3" role="search">
-            <input type="search" class="form-control" placeholder="..." aria-label="Search">
-          </form>
-
-
-        </div>
-      </header>
+  <!-- Alert Error -->
+  <?php if(isset($_GET['error'])){ ?>
+    <div class="alert alert-danger container mt-3" role="alert" style="width: 36%;">
+        <?php echo $_GET['error']; ?>
     </div>
-    <div class="container">
+  <?php } ?>
+  <!-- Table -->
+  <div class="container  d-flex justify-content-center">
+    <table class="table w-50">
+      <thead>
+        <tr>
+          <td></td>
+          <th scope="col">หน้า features</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="checkbox" name="Permiss[]" class="checkbox" value="1"></td>
+          <td>ข้อมูลพนักงาน</td>
+        </tr>
 
-      <table class="table">
-        <thead>
-          <tr>
-            <td><input type="checkbox"></td>
-            <th scope="col">ชื่อเเผนก </th>
+        <tr>
+          <td><input type="checkbox" name="Permiss[]" class="checkbox" value="1"></td>
+          <td>ตำแหน่ง</td>
+        </tr>
 
+        <tr>
+          <td><input type="checkbox" name="Permiss[]" class="checkbox" value="1"></td>
+          <td>แผนก</td>
+        </tr>
 
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>ข้อมูลผู้สมัคร</td>
+        <tr>
+          <td><input type="checkbox" name="Permiss[]" class="checkbox" value="1"></td>
+          <td>สิทธิ์การเข้าถึง</td>
+        </tr>
 
+        <tr>
+          <td><input type="checkbox" name="Permiss[]" class="checkbox" value="1"></td>
+          <td>จัดการคุณสมบัติแผนก</td>
+        </tr>
 
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>ข้อมูลองค์กร</td>
+        <tr>
+          <td><input type="checkbox" name="Permiss[]" class="checkbox" value="1"></td>
+          <td>ข้อมูลผู้สมัคร</td>
+        </tr>
 
+        <tr>
+          <td><input type="checkbox" name="Permiss[]" class="checkbox" value="1"></td>
+          <td>ยื่นขอพนักงาน</td>
+        </tr>
 
-          </tr>
+        <tr>
+          <td><input type="checkbox" name="Permiss[]" class="checkbox" value="1"></td>
+          <td>คัดเลือกผู้เข้าสมัคร</td>
+        </tr>
 
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>ยื่นขอพนักงาน</td>
+        <tr>
+          <td><input type="checkbox" name="Permiss[]" class="checkbox" value="1"></td>
+          <td>บุ๊คกิ้งวันสัมภาษณ์</td>
+        </tr>
 
+        <tr>
+          <td><input type="checkbox" name="Permiss[]" class="checkbox" value="1"></td>
+          <td>เลือกวันสัมภาษณ์</td>
+        </tr>
 
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>อนุมัติเอกสาร</td>
+        <tr>
+          <td><input type="checkbox" name="Permiss[]" class="checkbox" value="1"></td>
+          <td>ให้คะแนนสัมภาษณ์</td>
+        </tr>
 
+        <tr>
+          <td><input type="checkbox" name="Permiss[]" class="checkbox" value="1"></td>
+          <td>สรุปรายงานผลสอบ</td>
+        </tr>
 
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>บุ๊คกิ้งวันสัมภาษณ์</td>
+        <tr>
+          <td><input type="checkbox" name="Permiss[]" class="checkbox" value="1"></td>
+          <td>อนุมัติเอกสาร</td>
+        </tr>
 
+        <tr>
+          <td><input type="checkbox" name="Permiss[]" class="checkbox" value="1"></td>
+          <td>จัดการเอกสาร</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="container d-flex justify-content-end w-50 " style="margin-right: 425px;">
+    <input type="hidden" name="NUM_PERM" id="NUM_PERM" value="">
+    <input type="submit" value="ADD" name="_method" style="margin-top:5px" class="mb-5" onclick="getValue()">
+    </form>
+  </div>
+  </form>
 
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>ตะเเนนการสัมภาษณ์</td>
+  <script>
+    function getValue() {
+        var tmp = "";
+        const num = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0'];
+        var e = document.getElementsByClassName('checkbox');
+        for (var i = 0; e[i]; ++i) {
+            if (e[i].checked) {
+                num[i] = e[i].value;
+            } else {
+                num[i] = "0";
+            }
+        }
+        for (var a = 0; num[a]; a++) {
+            tmp += num[a];
+        }
 
-
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>สรุปรายงานการสอบ</td>
-
-
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>เเดชบอร์ด</td>
-
-
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>จัดการสิทธิ๋พนักงาน</td>
-
-
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>จัดการโครงสร้าง</td>
-
-
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td>โพสข่าวสาร</td>
-
-
-          </tr>
-
-
-        </tbody>
-      </table>
-      <button type="button" class="btn btn-warning">ยืนยัน</button>
-
-    </div>
-
-
-
-
-
-
-
-  </main>
-
-
+        // Set the value of NUM_PERM input field
+        document.getElementById('NUM_PERM').value = tmp;
+    }
+</script>
 
 </body>
 

@@ -1,0 +1,59 @@
+body{
+    background-color: #fff;
+}
+
+.wrapper{
+    display: flex;
+    position: relative;
+}
+
+.wrapper .bar-day{
+    z-index: -1;
+    position: fixed;
+    width: 250px;
+    height: 100%;
+}
+
+.wrapper .bar-day input{
+    margin-top: 10px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+    border-radius: 0.25rem;   
+    border : 1px solid #aaa;
+    padding: 0 15px;
+    width: 95%;
+    height: 35px;
+}
+
+.wrapper .bar-day button{
+    margin-top: 30px;
+}
+/* Bar Menu */
+select{
+    width: 300px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    border-radius: 0.5rem;   
+    border : 1px solid #aaa;
+    padding: 0 15px;
+    height: 36px;
+    margin: 8px 0;
+}
+
+/* Bar2 */
+.bar-day input{
+    margin-top: 10px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000000;
+    border-radius: 0.25rem;   
+    border : 1px solid #aaa;
+    padding: 0 15px;
+    width: 95%;
+    height: 35px;
+}
